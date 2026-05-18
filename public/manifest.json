@@ -1,0 +1,17 @@
+{
+  "name": "Pokémon Catch Ledger",
+  "short_name": "GOft26",
+  "description": "2026 GO Fest Tokyo 捕捉紀錄工具",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#10234a",
+  "theme_color": "#E83232",
+  "icons": [
+    {
+      "src": "/icon.jpg",
+      "sizes": "512x512",
+      "type": "image/jpeg",
+      "purpose": "any"
+    }
+  ]
+}
