@@ -853,21 +853,32 @@ function UnownCard(props) {
     { k: "xxl", lbl: "XXL", fs: 11 },
   ];
 
+  function unownSpriteSrc(form) {
+    var name = form === "!" ? "exclamation" : form === "?" ? "question" : form.toLowerCase();
+    return "/unown/" + name + ".png";
+  }
+
   function FormRow(rowProps) {
     var form = rowProps.form, t = tog[form], anyActive = Object.values(t).some(Boolean);
     return (
-      <div style={{ display: "flex", alignItems: "center", gap: 4, marginBottom: 5, width: "100%" }}>
-        <div style={{ color: anyActive ? hl.text : (isLight ? "rgba(0,0,0,0.3)" : "#aaa"), fontSize: 13, fontWeight: 700, width: 16, textAlign: "center", flexShrink: 0 }}>
+      <div style={{ display: "flex", alignItems: "center", gap: 3, marginBottom: 5, width: "100%" }}>
+        <div style={{ color: anyActive ? hl.text : (isLight ? "rgba(0,0,0,0.3)" : "#aaa"), fontSize: 13, fontWeight: 700, width: 14, textAlign: "center", flexShrink: 0 }}>
           {form === "!" ? "！" : form === "?" ? "？" : form}
         </div>
-        <div style={{ display: "flex", gap: 3, flex: 1 }}>
+        <img
+          src={unownSpriteSrc(form)}
+          alt={"Unown " + form}
+          style={{ width: 30, height: 30, objectFit: "contain", flexShrink: 0, imageRendering: "pixelated" }}
+          onError={function (e) { e.target.style.visibility = "hidden"; }}
+        />
+        <div style={{ display: "flex", gap: 2, flex: 1 }}>
           {btnCfg.map(function (cfg) {
             return (
               <button
                 key={cfg.k}
                 onClick={function () { flip(form, cfg.k); }}
                 aria-label={cfg.k}
-                style={{ flex: 1, height: 44, padding: 0, borderRadius: 4, fontSize: cfg.fs, fontWeight: 800, cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center", background: t[cfg.k] ? hl.bg : btnInactiveBg, color: t[cfg.k] ? hl.text : btnInactiveColor, border: "1px solid " + (t[cfg.k] ? hl.border : btnInactiveBorder), filter: t[cfg.k] ? "none" : "grayscale(1) brightness(1.8)", transition: "all 0.15s", WebkitTapHighlightColor: "transparent", touchAction: "manipulation" }}
+                style={{ flex: 1, height: 40, padding: 0, borderRadius: 4, fontSize: cfg.fs, fontWeight: 800, cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center", background: t[cfg.k] ? hl.bg : btnInactiveBg, color: t[cfg.k] ? hl.text : btnInactiveColor, border: "1px solid " + (t[cfg.k] ? hl.border : btnInactiveBorder), filter: t[cfg.k] ? "none" : "grayscale(1) brightness(1.8)", transition: "all 0.15s", WebkitTapHighlightColor: "transparent", touchAction: "manipulation", minWidth: 0 }}
               >
                 {cfg.lbl}
               </button>
