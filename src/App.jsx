@@ -919,7 +919,7 @@ function UnownCard(props) {
           </div>
           <span style={{ color: isLight ? "rgba(0,0,0,0.4)" : "#888", fontSize: 12, flexShrink: 0 }}>已捕捉 <span style={{ color: textPrimary, fontWeight: 700 }}>{caughtCount}</span> / {mon.total} 種</span>
         </div>
-        <div style={{ display: "flex", gap: 0, margin: "10px 10px 0", background: isLight ? "rgba(0,0,0,0.07)" : "rgba(255,255,255,0.07)", borderRadius: 100, padding: 4 }}>
+        <div style={{ display: "flex", gap: 0, margin: "10px 12px 0", background: isLight ? "rgba(0,0,0,0.07)" : "rgba(255,255,255,0.07)", borderRadius: 100, padding: 4 }}>
           {groups.map(function (g, i) {
             var active = selectedGroup === i;
             return (
@@ -929,7 +929,7 @@ function UnownCard(props) {
             );
           })}
         </div>
-        <div ref={carouselRef} className="strip-hide-sb" onScroll={onCarouselScroll} style={{ display: "flex", overflowX: "auto", scrollSnapType: "x mandatory", scrollbarWidth: "none", WebkitOverflowScrolling: "touch", padding: "10px 10px 6px" }}>
+        <div ref={carouselRef} className="strip-hide-sb" onScroll={onCarouselScroll} style={{ display: "flex", overflowX: "auto", scrollSnapType: "x mandatory", scrollbarWidth: "none", WebkitOverflowScrolling: "touch", padding: "10px 12px 6px" }}>
           {groups.map(function (g, gi) {
             return (
               <div key={gi} style={{ flexShrink: 0, width: "100%", scrollSnapAlign: "start" }}>
