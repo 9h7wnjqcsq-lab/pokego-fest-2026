@@ -1092,7 +1092,7 @@ function EventInfo() {
   var ep = useState(false); var eggPack = ep[0], setEggPack = ep[1];
 
   var parkDay = parkSession ? parkSession.split(" ")[0] : null;
-  var parkCityTime = parkSession ? (parkSession.includes("10:00") ? "15:00-20:00" : "10:00-15:00") : null;
+  var parkCityTime = parkSession ? (parkSession.includes("10:00") ? "15-20:00" : "10-15:00") : null;
   var availableDays = allDays.filter(function (d) { return d !== parkDay; });
   function toggleCity(d) { setCityDays(function (p) { var n = Object.assign({}, p); n[d] = !p[d]; return n; }); }
   var selectedCityDays = availableDays.filter(function (d) { return cityDays[d]; });
