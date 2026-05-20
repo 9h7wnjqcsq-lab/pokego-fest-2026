@@ -1116,6 +1116,18 @@ function EventInfo() {
           <option value="" style={{ background: "#1a1a2a", color: "#aaa" }}>選擇場次…</option>
           {parkSessions.map(function (s) { return <option key={s} value={s} style={{ background: "#1a1a2a", color: "#fff" }}>{s}</option>; })}
         </select>
+        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", margin: "12px 0 8px" }}>
+          <span style={{ color: "#888", fontSize: 12 }}>城市遊記</span>
+          {parkDay ? <span style={{ color: "#888", fontSize: 11 }}>{parkDay} 已含於公園遊記場次</span> : null}
+        </div>
+        <div style={{ display: "flex", gap: 6 }}>
+          {availableDays.map(function (d) {
+            return (
+              <button key={d} onClick={function () { toggleCity(d); }} style={{ flex: 1, padding: "12px 0", borderRadius: 8, fontSize: 12, fontWeight: 700, cursor: "pointer", background: cityDays[d] ? "rgba(255,215,0,0.15)" : "rgba(255,255,255,0.07)", color: cityDays[d] ? "#ffd700" : "rgba(255,255,255,0.4)", border: "1px solid " + (cityDays[d] ? "rgba(255,215,0,0.5)" : "rgba(255,255,255,0.12)"), transition: "all 0.15s", WebkitTapHighlightColor: "transparent", touchAction: "manipulation" }}>{d}</button>
+            );
+          })}
+        </div>
+        {selectedCityDays.length > 0 ? <div style={{ marginTop: 4, color: "#ffd700", fontSize: 11, fontWeight: 700, textAlign: "right" }}>{"已選 " + selectedCityDays.length + " 天 x ¥3,000 = ¥" + (selectedCityDays.length * 3000).toLocaleString()}</div> : null}
       </div>
       <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 12 }}>
         <span style={{ fontSize: 18 }}>🎟</span>
@@ -1150,15 +1162,6 @@ function EventInfo() {
           <span style={{ color: "#fff", fontSize: 17, fontWeight: 800 }}>城市遊記</span>
           <span style={{ color: "#888", fontSize: 15, fontWeight: 800 }}>¥3,000</span>
         </div>
-        <div style={{ display: "flex", gap: 6 }}>
-          {availableDays.map(function (d) {
-            return (
-              <button key={d} onClick={function () { toggleCity(d); }} style={{ flex: 1, padding: "12px 0", borderRadius: 8, fontSize: 12, fontWeight: 700, cursor: "pointer", background: cityDays[d] ? "rgba(255,215,0,0.15)" : "rgba(255,255,255,0.07)", color: cityDays[d] ? "#ffd700" : "rgba(255,255,255,0.4)", border: "1px solid " + (cityDays[d] ? "rgba(255,215,0,0.5)" : "rgba(255,255,255,0.12)"), transition: "all 0.15s", WebkitTapHighlightColor: "transparent", touchAction: "manipulation" }}>{d}</button>
-            );
-          })}
-        </div>
-        {parkDay ? <div style={{ marginTop: 8, color: "#888", fontSize: 11, textAlign: "right" }}>{parkDay} 已含於公園遊記場次</div> : null}
-        {selectedCityDays.length > 0 ? <div style={{ marginTop: 4, color: "#ffd700", fontSize: 11, fontWeight: 700, textAlign: "right" }}>{"已選 " + selectedCityDays.length + " 天 x ¥3,000 = ¥" + (selectedCityDays.length * 3000).toLocaleString()}</div> : null}
         <div style={{ color: "#888", fontSize: 12, margin: "8px 0 2px", textAlign: "right" }}>
           以下內容適用於所選日期{" "}
           <span style={{ color: selectedCityDays.length > 0 ? "#ffd700" : "#888" }}>10:00 - 20:00</span>
