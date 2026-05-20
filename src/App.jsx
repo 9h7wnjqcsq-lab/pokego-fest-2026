@@ -1132,17 +1132,21 @@ function EventInfo() {
           <div style={{ flex: 1, minWidth: 0 }}>
             <PackCard name="團戰加值包" price="¥2,000" details={raidPackDetails} active={raidPack} onToggle={function () { setRaidPack(function (v) { return !v; }); }} extra={
               <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 6 }}>
-                <div style={{ background: "rgba(0,0,0,0.06)", borderRadius: 8, border: "1px solid rgba(0,0,0,0.1)", padding: "10px 8px", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                <div style={{ background: "rgba(0,0,0,0.06)", borderRadius: 8, border: "1px solid rgba(0,0,0,0.1)", padding: "10px 8px", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: 4 }}>
                   <img src="/icons/ticket.svg" style={{ width: 32, height: 32, objectFit: "contain" }} alt="ticket" />
+                  <span style={{ color: "#555", fontSize: 11, textAlign: "center" }}>9 → 18 daily</span>
                 </div>
-                <div style={{ background: "rgba(0,0,0,0.06)", borderRadius: 8, border: "1px solid rgba(0,0,0,0.1)", padding: "10px 8px", display: "flex", alignItems: "center", justifyContent: "center", color: "#888", fontSize: 13, fontWeight: 700 }}>
-                  XP
+                <div style={{ background: "rgba(0,0,0,0.06)", borderRadius: 8, border: "1px solid rgba(0,0,0,0.1)", padding: "10px 8px", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: 4 }}>
+                  <span style={{ color: "#888", fontSize: 13, fontWeight: 700 }}>XP</span>
+                  <span style={{ color: "#555", fontSize: 11, textAlign: "center" }}>+5,000 per raid</span>
                 </div>
-                <div style={{ background: "rgba(0,0,0,0.06)", borderRadius: 8, border: "1px solid rgba(0,0,0,0.1)", padding: "10px 8px", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                <div style={{ background: "rgba(0,0,0,0.06)", borderRadius: 8, border: "1px solid rgba(0,0,0,0.1)", padding: "10px 8px", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: 4 }}>
                   <img src="/icons/candy.svg" style={{ width: 32, height: 32, objectFit: "contain" }} alt="candy" />
+                  <span style={{ color: "#555", fontSize: 11, textAlign: "center" }}>+6 per raid</span>
                 </div>
-                <div style={{ background: "rgba(0,0,0,0.06)", borderRadius: 8, border: "1px solid rgba(0,0,0,0.1)", padding: "10px 8px", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                <div style={{ background: "rgba(0,0,0,0.06)", borderRadius: 8, border: "1px solid rgba(0,0,0,0.1)", padding: "10px 8px", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: 4 }}>
                   <img src="/icons/candy.svg" style={{ width: 32, height: 32, objectFit: "contain" }} alt="candy" />
+                  <span style={{ color: "#555", fontSize: 11, textAlign: "center" }}>+3 XL per raid</span>
                 </div>
               </div>
             } />
