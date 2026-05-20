@@ -823,7 +823,7 @@ function UnownCard(props) {
   var allForms = leftForms.concat(rightForms);
   var tog_s = useState(function () {
     var init = {};
-    allForms.forEach(function (f) { init[f] = { shiny: false, lucky: false, xxs: false, xxl: false }; });
+    allForms.forEach(function (f) { init[f] = { got: false, shiny: false, lucky: false, xxs: false, xxl: false }; });
     return init;
   });
   var tog = tog_s[0], setTog = tog_s[1];
@@ -847,10 +847,11 @@ function UnownCard(props) {
   var btnInactiveColor = isLight ? "rgba(0,0,0,0.35)" : "rgba(255,255,255,0.35)";
   var btnInactiveBorder = isLight ? "rgba(0,0,0,0.12)" : "rgba(255,255,255,0.12)";
   var btnCfg = [
-    { k: "shiny", lbl: "✨", fs: 18 },
-    { k: "lucky", lbl: "Lucky", fs: 8 },
-    { k: "xxs", lbl: "XXS", fs: 11 },
-    { k: "xxl", lbl: "XXL", fs: 11 },
+    { k: "got",   lbl: "",      fs: 11 },
+    { k: "shiny", lbl: "✨",    fs: 18 },
+    { k: "lucky", lbl: "Lucky", fs: 8  },
+    { k: "xxs",   lbl: "XXS",   fs: 11 },
+    { k: "xxl",   lbl: "XXL",   fs: 11 },
   ];
 
   function unownSpriteSrc(form) {
@@ -861,30 +862,30 @@ function UnownCard(props) {
   function FormRow(rowProps) {
     var form = rowProps.form, t = tog[form], anyActive = Object.values(t).some(Boolean);
     return (
-      <div style={{ display: "flex", alignItems: "center", gap: 3, marginBottom: 5, width: "100%" }}>
-        <div style={{ color: anyActive ? hl.text : (isLight ? "rgba(0,0,0,0.3)" : "#aaa"), fontSize: 13, fontWeight: 700, width: 14, textAlign: "left", flexShrink: 0 }}>
+      <div style={{ display: "grid", gridTemplateColumns: "repeat(7, 1fr)", gap: 3, marginBottom: 5, width: "100%", height: 53 }}>
+        <div style={{ display: "flex", alignItems: "center", justifyContent: "center", color: anyActive ? hl.text : (isLight ? "rgba(0,0,0,0.3)" : "#aaa"), fontSize: 13, fontWeight: 700 }}>
           {form === "!" ? "！" : form === "?" ? "？" : form}
         </div>
-        <img
-          src={unownSpriteSrc(form)}
-          alt={"Unown " + form}
-          style={{ width: 53, height: 53, objectFit: "contain", flexShrink: 0, imageRendering: "pixelated" }}
-          onError={function (e) { e.target.style.visibility = "hidden"; }}
-        />
-        <div style={{ display: "flex", gap: 2, flex: 1 }}>
-          {btnCfg.map(function (cfg) {
-            return (
-              <button
-                key={cfg.k}
-                onClick={function () { flip(form, cfg.k); }}
-                aria-label={cfg.k}
-                style={{ flex: "0 0 56px", width: 56, height: 53, padding: 0, borderRadius: 4, fontSize: cfg.fs, fontWeight: 800, cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center", background: t[cfg.k] ? hl.bg : btnInactiveBg, color: t[cfg.k] ? hl.text : btnInactiveColor, border: "1px solid " + (t[cfg.k] ? hl.border : btnInactiveBorder), filter: t[cfg.k] ? "none" : "grayscale(1) brightness(1.8)", transition: "all 0.15s", WebkitTapHighlightColor: "transparent", touchAction: "manipulation" }}
-              >
-                {cfg.lbl}
-              </button>
-            );
-          })}
+        <div style={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
+          <img
+            src={unownSpriteSrc(form)}
+            alt={"Unown " + form}
+            style={{ width: "100%", height: "100%", objectFit: "contain", imageRendering: "pixelated" }}
+            onError={function (e) { e.target.style.visibility = "hidden"; }}
+          />
         </div>
+        {btnCfg.map(function (cfg) {
+          return (
+            <button
+              key={cfg.k}
+              onClick={function () { flip(form, cfg.k); }}
+              aria-label={cfg.k}
+              style={{ width: "100%", height: "100%", padding: 0, borderRadius: 4, fontSize: cfg.fs, fontWeight: 800, cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center", background: t[cfg.k] ? hl.bg : btnInactiveBg, color: t[cfg.k] ? hl.text : btnInactiveColor, border: "1px solid " + (t[cfg.k] ? hl.border : btnInactiveBorder), filter: t[cfg.k] ? "none" : "grayscale(1) brightness(1.8)", transition: "all 0.15s", WebkitTapHighlightColor: "transparent", touchAction: "manipulation" }}
+            >
+              {cfg.lbl}
+            </button>
+          );
+        })}
       </div>
     );
   }
@@ -1403,7 +1404,7 @@ export default function App() {
   var wt_s = useState({}); var wildTogs = wt_s[0], setWildTogs = wt_s[1];
   var ut_s = useState(function () {
     var init = {};
-    UNOWN_FORMS.forEach(function (f) { init[f] = { shiny: false, lucky: false, xxs: false, xxl: false }; });
+    UNOWN_FORMS.forEach(function (f) { init[f] = { got: false, shiny: false, lucky: false, xxs: false, xxl: false }; });
     return init;
   });
   var unownTog = ut_s[0], setUnownTog = ut_s[1];
