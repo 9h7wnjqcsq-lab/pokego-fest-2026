@@ -1109,8 +1109,7 @@ function EventInfo() {
     <div>
       <div style={CARD}>
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 8 }}>
-          <span style={{ color: "#fff", fontSize: 15, fontWeight: 800 }}>選擇場次</span>
-          <span style={{ color: "#888", fontSize: 12 }}>公園遊記</span>
+          <span style={{ color: "#1a1a2a", fontSize: 15, fontWeight: 800 }}>公園遊記</span>
         </div>
         <select value={parkSession} onChange={function (e) { setParkSession(e.target.value); }} style={{ background: "rgba(255,255,255,0.08)", border: "1px solid rgba(255,255,255,0.15)", borderRadius: 8, padding: "5px 8px", fontSize: 12, fontWeight: 700, color: parkSession ? "#ffd700" : "rgba(255,255,255,0.4)", cursor: "pointer", outline: "none", width: "100%", WebkitAppearance: "none", appearance: "none" }}>
           <option value="" style={{ background: "#1a1a2a", color: "#aaa" }}>選擇場次…</option>
@@ -1147,18 +1146,18 @@ function EventInfo() {
       </div>
       <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 12 }}>
         <span style={{ fontSize: 18 }}>🎟</span>
-        <span style={{ color: "#ccc", fontSize: 15, fontWeight: 700 }}>票種</span>
+        <span style={{ color: "#1a1a2a", fontSize: 15, fontWeight: 700 }}>票種</span>
       </div>
       <div style={CARD}>
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 8 }}>
-          <span style={{ color: "#fff", fontSize: 17, fontWeight: 800 }}>公園遊記</span>
+          <span style={{ color: "#1a1a2a", fontSize: 17, fontWeight: 800 }}>公園遊記</span>
           <span style={{ color: "#888", fontSize: 15, fontWeight: 800 }}>¥4,000</span>
         </div>
         <PerkList perks={parkPerks} />
       </div>
       <div style={CARD}>
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 8 }}>
-          <span style={{ color: "#fff", fontSize: 17, fontWeight: 800 }}>城市遊記</span>
+          <span style={{ color: "#1a1a2a", fontSize: 17, fontWeight: 800 }}>城市遊記</span>
           <span style={{ color: "#888", fontSize: 15, fontWeight: 800 }}>¥3,000</span>
         </div>
         <div style={{ color: "#888", fontSize: 12, margin: "8px 0 2px", textAlign: "right" }}>
@@ -1170,7 +1169,7 @@ function EventInfo() {
       <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 8, margin: "20px 0 12px" }}>
         <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
           <span style={{ fontSize: 18 }}>📦</span>
-          <span style={{ color: "#ccc", fontSize: 15, fontWeight: 700 }}>加值包</span>
+          <span style={{ color: "#1a1a2a", fontSize: 15, fontWeight: 700 }}>加值包</span>
         </div>
         <span style={{ color: (raidPack || eggPack) ? "#ffd700" : "#888", fontSize: 11 }}>適用於 5/25 - 6/1 期間</span>
       </div>
