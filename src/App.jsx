@@ -862,7 +862,7 @@ function UnownCard(props) {
   function FormRow(rowProps) {
     var form = rowProps.form, t = tog[form], anyActive = Object.values(t).some(Boolean);
     return (
-      <div style={{ display: "grid", gridTemplateColumns: "auto auto 1fr 1fr 1fr 1fr 1fr", gap: 3, marginBottom: 10, width: "100%", height: 53, alignItems: "stretch" }}>
+      <div style={{ display: "grid", gridTemplateColumns: "auto auto 1fr", gap: 3, marginBottom: 10, width: "100%", height: 53, alignItems: "stretch" }}>
         <div style={{ display: "flex", alignItems: "center", justifyContent: "center", color: anyActive ? hl.text : (isLight ? "rgba(0,0,0,0.3)" : "#aaa"), fontSize: 20, fontWeight: 700, paddingRight: 0 }}>
           {form === "!" ? "！" : form === "?" ? "？" : form}
         </div>
@@ -874,18 +874,20 @@ function UnownCard(props) {
             onError={function (e) { e.target.style.visibility = "hidden"; }}
           />
         </div>
-        {btnCfg.map(function (cfg) {
-          return (
-            <button
-              key={cfg.k}
-              onClick={function () { flip(form, cfg.k); }}
-              aria-label={cfg.k}
-              style={{ width: "100%", height: "100%", padding: 0, borderRadius: 4, fontSize: cfg.fs, fontWeight: 800, cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center", background: t[cfg.k] ? hl.bg : btnInactiveBg, color: t[cfg.k] ? hl.text : btnInactiveColor, border: "1px solid " + (t[cfg.k] ? hl.border : btnInactiveBorder), filter: (t[cfg.k] || cfg.noFilter) ? "none" : "grayscale(1) brightness(1.8)", transition: "all 0.15s", WebkitTapHighlightColor: "transparent", touchAction: "manipulation" }}
-            >
-              {t[cfg.k] && cfg.activeLbl ? cfg.activeLbl : cfg.lbl}
-            </button>
-          );
-        })}
+        <div style={{ display: "flex", gap: 3, justifyContent: "flex-end", alignItems: "stretch" }}>
+          {btnCfg.map(function (cfg) {
+            return (
+              <button
+                key={cfg.k}
+                onClick={function () { flip(form, cfg.k); }}
+                aria-label={cfg.k}
+                style={{ width: 44, height: "100%", padding: 0, borderRadius: 4, fontSize: cfg.fs, fontWeight: 800, cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center", background: t[cfg.k] ? hl.bg : btnInactiveBg, color: t[cfg.k] ? hl.text : btnInactiveColor, border: "1px solid " + (t[cfg.k] ? hl.border : btnInactiveBorder), filter: (t[cfg.k] || cfg.noFilter) ? "none" : "grayscale(1) brightness(1.8)", transition: "all 0.15s", WebkitTapHighlightColor: "transparent", touchAction: "manipulation" }}
+              >
+                {t[cfg.k] && cfg.activeLbl ? cfg.activeLbl : cfg.lbl}
+              </button>
+            );
+          })}
+        </div>
       </div>
     );
   }
