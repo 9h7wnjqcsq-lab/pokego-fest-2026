@@ -1117,7 +1117,7 @@ function EventInfo() {
         </select>
         <div style={{ margin: "12px 0 8px" }}>
           <span style={{ color: "#888", fontSize: 12 }}>城市遊記（街上樂遊加值包）</span>
-          {parkDay ? <div style={{ color: "#888", fontSize: 11, marginTop: 3 }}>{parkDay} 已含於公園遊記場次</div> : null}
+          {parkDay ? <div style={{ color: "#888", fontSize: 11, marginTop: 3 }}>{parkDay} 已包含於公園遊記場次</div> : null}
         </div>
         <div style={{ display: "flex", gap: 6 }}>
           {availableDays.map(function (d) {
