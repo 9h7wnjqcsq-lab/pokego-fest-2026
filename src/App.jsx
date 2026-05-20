@@ -357,12 +357,6 @@ var parkSessions = [
 var allDays = ["5/25", "5/26", "5/27", "5/28", "5/29", "5/30", "5/31", "6/1"];
 
 var parkPerks = [
-  { text: "特殊調查「捷拉奧拉」", color: "#ccc" },
-  { text: "限時調查訓練家挑戰，以獲得特殊獎牌", color: "#ccc" },
-  { text: "分支限時調查率先遭遇「超級超夢 X」或「超級超夢 Y」", color: "#ccc" },
-  { text: "在公園賽程結束時挑戰「超級超夢 X」或「超級超夢 Y」", color: "#7ecfff" },
-  { text: "捕捉到的所有超夢，都將學會一般招式「反擊」與特殊招式「精神擊破」。", color: "#ccc" },
-  { text: "遭遇帶著棒球帽的綠毛蟲、戴著皮卡丘眼罩的初代御三家", color: "#ccc" },
   { text: "活動主題田野調查", color: "#ccc" },
   { text: "野外遭遇主題寶可夢", color: "#ccc" },
   { text: "異色機率提升", color: "#ccc" },
