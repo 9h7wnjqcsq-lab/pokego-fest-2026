@@ -1132,9 +1132,18 @@ function EventInfo() {
           <div style={{ flex: 1, minWidth: 0 }}>
             <PackCard name="團戰加值包" price="¥2,000" details={raidPackDetails} active={raidPack} onToggle={function () { setRaidPack(function (v) { return !v; }); }} extra={
               <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 6 }}>
-                {["Placeholder 1", "Placeholder 2", "Placeholder 3", "Placeholder 4"].map(function (label) {
-                  return <div key={label} style={{ background: "rgba(0,0,0,0.06)", borderRadius: 8, border: "1px solid rgba(0,0,0,0.1)", padding: "10px 8px", textAlign: "center", color: "#888", fontSize: 12 }}>{label}</div>;
-                })}
+                <div style={{ background: "rgba(0,0,0,0.06)", borderRadius: 8, border: "1px solid rgba(0,0,0,0.1)", padding: "10px 8px", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                  <img src="/icons/ticket.svg" style={{ width: 32, height: 32, objectFit: "contain" }} alt="ticket" />
+                </div>
+                <div style={{ background: "rgba(0,0,0,0.06)", borderRadius: 8, border: "1px solid rgba(0,0,0,0.1)", padding: "10px 8px", display: "flex", alignItems: "center", justifyContent: "center", color: "#888", fontSize: 13, fontWeight: 700 }}>
+                  XP
+                </div>
+                <div style={{ background: "rgba(0,0,0,0.06)", borderRadius: 8, border: "1px solid rgba(0,0,0,0.1)", padding: "10px 8px", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                  <img src="/icons/candy.svg" style={{ width: 32, height: 32, objectFit: "contain" }} alt="candy" />
+                </div>
+                <div style={{ background: "rgba(0,0,0,0.06)", borderRadius: 8, border: "1px solid rgba(0,0,0,0.1)", padding: "10px 8px", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                  <img src="/icons/candy.svg" style={{ width: 32, height: 32, objectFit: "contain" }} alt="candy" />
+                </div>
               </div>
             } />
           </div>
