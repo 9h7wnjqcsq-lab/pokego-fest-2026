@@ -1102,8 +1102,8 @@ function EventInfo() {
   var breakdown = [].concat(
     parkSession ? [{ label: "公園遊記  " + parkSession, amount: 4000 }] : [],
     selectedCityDays.length > 0 ? [{ label: "城市遊記 x " + selectedCityDays.length + "  ( " + selectedCityDays.join(", ") + " 10:00 - 20:00 )", amount: selectedCityDays.length * 3000 }] : [],
-    raidPack ? [{ label: "團戰加值包", amount: 2000 }] : [],
-    eggPack ? [{ label: "孵蛋加值包", amount: 2000 }] : []
+    raidPack ? [{ label: "團戰加值包（適用 5/25 - 6/1 於東京市區遊玩）", amount: 2000 }] : [],
+    eggPack ? [{ label: "孵蛋加值包（適用 5/25 - 6/1 於東京市區遊玩）", amount: 2000 }] : []
   );
 
   return (
