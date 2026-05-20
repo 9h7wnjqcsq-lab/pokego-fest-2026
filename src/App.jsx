@@ -1135,6 +1135,16 @@ function EventInfo() {
             <PackCard name="孵蛋加值包" price="¥2,000" details={eggPackDetails} active={eggPack} onToggle={function () { setEggPack(function (v) { return !v; }); }} />
           </div>
         </div>
+        <div style={{ background: "rgba(0,0,0,0.04)", borderRadius: 10, border: "1px solid rgba(0,0,0,0.08)", padding: "10px 12px", marginTop: 8 }}>
+          <div style={{ color: "#1a1a2a", fontSize: 13, fontWeight: 700, marginBottom: 8 }}>團戰加值包</div>
+          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 6 }}>
+            {["Placeholder 1", "Placeholder 2", "Placeholder 3", "Placeholder 4"].map(function (label) {
+              return (
+                <div key={label} style={{ background: "rgba(0,0,0,0.06)", borderRadius: 8, border: "1px solid rgba(0,0,0,0.1)", padding: "10px 8px", textAlign: "center", color: "#888", fontSize: 12 }}>{label}</div>
+              );
+            })}
+          </div>
+        </div>
         {hasSelection ? (
           <div style={{ marginTop: 12, borderTop: "1px solid rgba(0,0,0,0.1)", paddingTop: 10 }}>
             <div style={{ display: "flex", justifyContent: "flex-end", marginBottom: 6 }}>
