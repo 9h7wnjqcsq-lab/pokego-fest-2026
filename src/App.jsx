@@ -847,7 +847,7 @@ function UnownCard(props) {
   var btnInactiveColor = isLight ? "rgba(0,0,0,0.35)" : "rgba(255,255,255,0.35)";
   var btnInactiveBorder = isLight ? "rgba(0,0,0,0.12)" : "rgba(255,255,255,0.12)";
   var btnCfg = [
-    { k: "got",   lbl: "",      fs: 11 },
+    { k: "got",   lbl: "☐", activeLbl: "☑", fs: 16, noFilter: true },
     { k: "shiny", lbl: "✨",    fs: 18 },
     { k: "lucky", lbl: "Lucky", fs: 8  },
     { k: "xxs",   lbl: "XXS",   fs: 11 },
@@ -862,15 +862,15 @@ function UnownCard(props) {
   function FormRow(rowProps) {
     var form = rowProps.form, t = tog[form], anyActive = Object.values(t).some(Boolean);
     return (
-      <div style={{ display: "grid", gridTemplateColumns: "repeat(7, 1fr)", gap: 3, marginBottom: 10, width: "100%", height: 53 }}>
-        <div style={{ display: "flex", alignItems: "center", justifyContent: "center", color: anyActive ? hl.text : (isLight ? "rgba(0,0,0,0.3)" : "#aaa"), fontSize: 20, fontWeight: 700 }}>
+      <div style={{ display: "grid", gridTemplateColumns: "auto auto 1fr 1fr 1fr 1fr 1fr", gap: 3, marginBottom: 10, width: "100%", height: 53, alignItems: "stretch" }}>
+        <div style={{ display: "flex", alignItems: "center", justifyContent: "center", color: anyActive ? hl.text : (isLight ? "rgba(0,0,0,0.3)" : "#aaa"), fontSize: 20, fontWeight: 700, paddingRight: 0 }}>
           {form === "!" ? "！" : form === "?" ? "？" : form}
         </div>
         <div style={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
           <img
             src={unownSpriteSrc(form)}
             alt={"Unown " + form}
-            style={{ width: "100%", height: "100%", objectFit: "contain", imageRendering: "pixelated" }}
+            style={{ width: 53, height: 53, objectFit: "contain", imageRendering: "pixelated" }}
             onError={function (e) { e.target.style.visibility = "hidden"; }}
           />
         </div>
@@ -880,9 +880,9 @@ function UnownCard(props) {
               key={cfg.k}
               onClick={function () { flip(form, cfg.k); }}
               aria-label={cfg.k}
-              style={{ width: "100%", height: "100%", padding: 0, borderRadius: 4, fontSize: cfg.fs, fontWeight: 800, cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center", background: t[cfg.k] ? hl.bg : btnInactiveBg, color: t[cfg.k] ? hl.text : btnInactiveColor, border: "1px solid " + (t[cfg.k] ? hl.border : btnInactiveBorder), filter: t[cfg.k] ? "none" : "grayscale(1) brightness(1.8)", transition: "all 0.15s", WebkitTapHighlightColor: "transparent", touchAction: "manipulation" }}
+              style={{ width: "100%", height: "100%", padding: 0, borderRadius: 4, fontSize: cfg.fs, fontWeight: 800, cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center", background: t[cfg.k] ? hl.bg : btnInactiveBg, color: t[cfg.k] ? hl.text : btnInactiveColor, border: "1px solid " + (t[cfg.k] ? hl.border : btnInactiveBorder), filter: (t[cfg.k] || cfg.noFilter) ? "none" : "grayscale(1) brightness(1.8)", transition: "all 0.15s", WebkitTapHighlightColor: "transparent", touchAction: "manipulation" }}
             >
-              {cfg.lbl}
+              {t[cfg.k] && cfg.activeLbl ? cfg.activeLbl : cfg.lbl}
             </button>
           );
         })}
