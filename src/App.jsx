@@ -929,7 +929,7 @@ function UnownCard(props) {
             );
           })}
         </div>
-        <div ref={carouselRef} className="strip-hide-sb" onScroll={onCarouselScroll} style={{ display: "flex", overflowX: "auto", scrollSnapType: "x mandatory", scrollbarWidth: "none", WebkitOverflowScrolling: "touch", padding: "10px 8px 6px" }}>
+        <div ref={carouselRef} className="strip-hide-sb" onScroll={onCarouselScroll} style={{ display: "flex", overflowX: "auto", scrollSnapType: "x mandatory", scrollbarWidth: "none", WebkitOverflowScrolling: "touch", padding: "10px 10px 6px" }}>
           {groups.map(function (g, gi) {
             return (
               <div key={gi} style={{ flexShrink: 0, width: "100%", scrollSnapAlign: "start" }}>
