@@ -1149,9 +1149,18 @@ function EventInfo() {
           <div style={{ flex: 1, minWidth: 0 }}>
             <PackCard name="孵蛋加值包" price="¥2,000" details={eggPackDetails} active={eggPack} onToggle={function () { setEggPack(function (v) { return !v; }); }} extra={
               <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 6 }}>
-                {["Placeholder 1", "Placeholder 2", "Placeholder 3", "Placeholder 4"].map(function (label) {
-                  return <div key={label} style={{ background: "rgba(0,0,0,0.06)", borderRadius: 8, border: "1px solid rgba(0,0,0,0.1)", padding: "10px 8px", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: 4, color: "#888", fontSize: 12, textAlign: "center" }}>{label}</div>;
-                })}
+                <div style={{ background: "rgba(0,0,0,0.06)", borderRadius: 8, border: "1px solid rgba(0,0,0,0.1)", padding: "10px 8px", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: 4 }}>
+                  <img src="/icons/hatch.svg" style={{ width: 32, height: 32, objectFit: "contain" }} alt="hatch" />
+                </div>
+                <div style={{ background: "rgba(0,0,0,0.06)", borderRadius: 8, border: "1px solid rgba(0,0,0,0.1)", padding: "10px 8px", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: 4 }}>
+                  <span style={{ color: "#888", fontSize: 13, fontWeight: 700, lineHeight: "32px" }}>XP</span>
+                </div>
+                <div style={{ background: "rgba(0,0,0,0.06)", borderRadius: 8, border: "1px solid rgba(0,0,0,0.1)", padding: "10px 8px", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: 4 }}>
+                  <img src="/icons/candy.svg" style={{ width: 32, height: 32, objectFit: "contain" }} alt="candy" />
+                </div>
+                <div style={{ background: "rgba(0,0,0,0.06)", borderRadius: 8, border: "1px solid rgba(0,0,0,0.1)", padding: "10px 8px", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: 4 }}>
+                  <img src="/icons/dust.svg" style={{ width: 32, height: 32, objectFit: "contain" }} alt="dust" />
+                </div>
               </div>
             } />
           </div>
