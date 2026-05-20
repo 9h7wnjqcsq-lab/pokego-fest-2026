@@ -868,7 +868,7 @@ function UnownCard(props) {
         <img
           src={unownSpriteSrc(form)}
           alt={"Unown " + form}
-          style={{ width: 30, height: 30, objectFit: "contain", flexShrink: 0, imageRendering: "pixelated" }}
+          style={{ width: 53, height: 53, objectFit: "contain", flexShrink: 0, imageRendering: "pixelated" }}
           onError={function (e) { e.target.style.visibility = "hidden"; }}
         />
         <div style={{ display: "flex", gap: 2, flex: 1 }}>
@@ -878,7 +878,7 @@ function UnownCard(props) {
                 key={cfg.k}
                 onClick={function () { flip(form, cfg.k); }}
                 aria-label={cfg.k}
-                style={{ flex: "0 0 28px", width: 28, height: 53, padding: 0, borderRadius: 4, fontSize: cfg.fs, fontWeight: 800, cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center", background: t[cfg.k] ? hl.bg : btnInactiveBg, color: t[cfg.k] ? hl.text : btnInactiveColor, border: "1px solid " + (t[cfg.k] ? hl.border : btnInactiveBorder), filter: t[cfg.k] ? "none" : "grayscale(1) brightness(1.8)", transition: "all 0.15s", WebkitTapHighlightColor: "transparent", touchAction: "manipulation" }}
+                style={{ flex: "0 0 56px", width: 56, height: 53, padding: 0, borderRadius: 4, fontSize: cfg.fs, fontWeight: 800, cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center", background: t[cfg.k] ? hl.bg : btnInactiveBg, color: t[cfg.k] ? hl.text : btnInactiveColor, border: "1px solid " + (t[cfg.k] ? hl.border : btnInactiveBorder), filter: t[cfg.k] ? "none" : "grayscale(1) brightness(1.8)", transition: "all 0.15s", WebkitTapHighlightColor: "transparent", touchAction: "manipulation" }}
               >
                 {cfg.lbl}
               </button>
