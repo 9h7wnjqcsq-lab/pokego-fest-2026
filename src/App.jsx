@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 
 var typeColors = {
   ICE: { bg: "#7ecfff" },
@@ -711,7 +711,7 @@ function LabelBtn(props) {
 // ── RaidRow ──────────────────────────────────────────────────────────────────
 function RaidRow(props) {
   var raid = props.raid, onTogChange = props.onTogChange;
-  var exp_s = useState(false);
+  var exp_s = useState(props.defaultExpanded || false);
   var expanded = exp_s[0], setExpanded = exp_s[1];
   var tog_s = useState({ shiny: false, iv100: false, lucky2: false, xxs: false, xxl: false, lucky: false });
   var tog = tog_s[0], setTog = tog_s[1];
@@ -889,6 +889,25 @@ function UnownCard(props) {
     );
   }
 
+  var carouselRef = useRef(null);
+  var sg_s = useState(0); var selectedGroup = sg_s[0], setSelectedGroup = sg_s[1];
+  var groups = [
+    { label: "A – G", forms: ["A","B","C","D","E","F","G"] },
+    { label: "H – N", forms: ["H","I","J","K","L","M","N"] },
+    { label: "O – U", forms: ["O","P","Q","R","S","T","U"] },
+    { label: "V – ?", forms: ["V","W","X","Y","Z","!","?"] },
+  ];
+  function scrollToGroup(i) {
+    setSelectedGroup(i);
+    if (carouselRef.current) {
+      carouselRef.current.scrollTo({ left: carouselRef.current.offsetWidth * i, behavior: "smooth" });
+    }
+  }
+  function onCarouselScroll(e) {
+    var idx = Math.round(e.target.scrollLeft / e.target.offsetWidth);
+    setSelectedGroup(idx);
+  }
+
   if (inline) {
     return (
       <div style={{ background: mon.bg, borderRadius: 16, overflow: "hidden" }}>
@@ -900,11 +919,32 @@ function UnownCard(props) {
           </div>
           <span style={{ color: isLight ? "rgba(0,0,0,0.4)" : "#888", fontSize: 12, flexShrink: 0 }}>已捕捉 <span style={{ color: textPrimary, fontWeight: 700 }}>{caughtCount}</span> / {mon.total} 種</span>
         </div>
-        <div style={{ padding: "10px 8px" }}>
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "0 8px" }}>
-            <div style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>{leftForms.map(function (f) { return <FormRow key={f} form={f} />; })}</div>
-            <div style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>{rightForms.map(function (f) { return <FormRow key={f} form={f} />; })}</div>
-          </div>
+        <div style={{ display: "flex", gap: 0, margin: "10px 10px 0", background: isLight ? "rgba(0,0,0,0.07)" : "rgba(255,255,255,0.07)", borderRadius: 100, padding: 4 }}>
+          {groups.map(function (g, i) {
+            var active = selectedGroup === i;
+            return (
+              <button key={i} onClick={function () { scrollToGroup(i); }} style={{ flex: 1, borderRadius: 100, border: "none", background: active ? (isLight ? "rgba(255,255,255,0.9)" : "rgba(255,255,255,0.2)") : "transparent", color: active ? textPrimary : (isLight ? "rgba(0,0,0,0.4)" : "rgba(255,255,255,0.45)"), fontSize: 10, fontWeight: 700, padding: "5px 2px", cursor: "pointer", WebkitTapHighlightColor: "transparent", touchAction: "manipulation", transition: "all 0.2s", fontFamily: "'Share Tech Mono',monospace", whiteSpace: "nowrap" }}>
+                {g.label}
+              </button>
+            );
+          })}
+        </div>
+        <div ref={carouselRef} className="strip-hide-sb" onScroll={onCarouselScroll} style={{ display: "flex", overflowX: "auto", scrollSnapType: "x mandatory", scrollbarWidth: "none", WebkitOverflowScrolling: "touch", padding: "10px 8px 6px" }}>
+          {groups.map(function (g, gi) {
+            return (
+              <div key={gi} style={{ flexShrink: 0, width: "100%", scrollSnapAlign: "start" }}>
+                {g.forms.map(function (f) { return <FormRow key={f} form={f} />; })}
+              </div>
+            );
+          })}
+        </div>
+        <div style={{ display: "flex", justifyContent: "center", gap: 6, padding: "2px 0 12px" }}>
+          {groups.map(function (_, i) {
+            var active = selectedGroup === i;
+            return (
+              <div key={i} onClick={function () { scrollToGroup(i); }} style={{ width: active ? 16 : 6, height: 6, borderRadius: 3, background: active ? hl.border : (isLight ? "rgba(0,0,0,0.2)" : "rgba(255,255,255,0.25)"), transition: "all 0.2s", cursor: "pointer" }} />
+            );
+          })}
         </div>
       </div>
     );
@@ -1443,7 +1483,7 @@ export default function App() {
       {tab === 0 ? (
         <div>
           <div style={{ padding: "0 2px", marginBottom: 10, fontSize: 13, lineHeight: 1.5, color: "#444" }}>
-            <div style={{ color: "#153250", fontWeight: 700, marginBottom: 6 }}>「超級超夢X」與「超級超夢Y」首度登場</div>
+            <div style={{ color: "#f95587", fontWeight: 700, marginBottom: 6 }}>極致超級團體戰：超級超夢 X、超級超夢 Y 首度登場！</div>
             <p style={{ marginBottom: 6 }}>公園體驗最後 30 分鐘會出現新道館，讓超過一千名訓練家一同挑戰！</p>
             <p style={{ marginBottom: 8 }}>捕捉到的超夢：一般招式「反擊」+ 特殊招式「精神擊破」+ 東京背卡 + 超級等級 1 🍀運氣好的話可能是超級等級 2 或 3</p>
             <p style={{ color: "#aaa" }}>⚠️ 超級超夢X、超級超夢Y 超級能量不共用，需分開累積。</p>
@@ -1470,7 +1510,7 @@ export default function App() {
             var shadow = shadowRaids.find(function (s) { return s.sprite === r.sprite; });
             return (
               <div key={r.id} style={{ display: selectedRaid === r.id ? "block" : "none" }}>
-                <RaidRow raid={r} onTogChange={function (id, t) { setRaidTogs(function (p) { var n = Object.assign({}, p); n[id] = t; return n; }); }} />
+                <RaidRow raid={r} defaultExpanded={r.id === 6} onTogChange={function (id, t) { setRaidTogs(function (p) { var n = Object.assign({}, p); n[id] = t; return n; }); }} />
                 {shadow ? <RaidRow raid={shadow} onTogChange={function (id, t) { setRaidTogs(function (p) { var n = Object.assign({}, p); n[id] = t; return n; }); }} /> : null}
               </div>
             );
