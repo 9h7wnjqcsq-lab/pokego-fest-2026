@@ -862,7 +862,7 @@ function UnownCard(props) {
   function FormRow(rowProps) {
     var form = rowProps.form, t = tog[form], anyActive = Object.values(t).some(Boolean);
     return (
-      <div style={{ display: "grid", gridTemplateColumns: "repeat(7, 1fr)", gap: 3, marginBottom: 5, width: "100%", height: 53 }}>
+      <div style={{ display: "grid", gridTemplateColumns: "repeat(7, 1fr)", gap: 3, marginBottom: 10, width: "100%", height: 53 }}>
         <div style={{ display: "flex", alignItems: "center", justifyContent: "center", color: anyActive ? hl.text : (isLight ? "rgba(0,0,0,0.3)" : "#aaa"), fontSize: 13, fontWeight: 700 }}>
           {form === "!" ? "！" : form === "?" ? "？" : form}
         </div>
