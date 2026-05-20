@@ -1184,10 +1184,6 @@ function EventInfo() {
           </div>
         ) : null}
       </div>
-      <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 12 }}>
-        <span style={{ fontSize: 18 }}>🎟</span>
-        <span style={{ color: "#1a1a2a", fontSize: 15, fontWeight: 700 }}>票種</span>
-      </div>
       <div style={CARD}>
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 8 }}>
           <span style={{ color: "#1a1a2a", fontSize: 17, fontWeight: 800 }}>公園遊記</span>
