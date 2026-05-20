@@ -364,13 +364,9 @@ var parkPerks = [
 ];
 
 var cityPerks = [
-  { text: "異色機率提升", color: "#ccc" },
-  { text: "捕捉糖果加倍", color: "#ccc" },
-  { text: "小隊合作時間延長", color: "#f95587" },
-  { text: "誘餌模組效果：2小時", color: "#ccc" },
-  { text: "薰香效果延長：2小時", color: "#ccc" },
-  { text: "活動主題田野調查：每小時領取", color: "#ccc" },
-  { text: "獲得特殊活動主題貼圖：旋補給站、開禮物", color: "#ccc" },
+  { text: "異色機率提升｜捕捉糖果加倍｜小隊合作時間延長", color: "#ccc" },
+  { text: "誘餌模組效果：2小時｜薰香效果延長：2小時", color: "#ccc" },
+  { text: "每小時領取活動主題田野調查｜獲得特殊活動主題貼圖：旋補給站、開禮物", color: "#ccc" },
 ];
 
 var raidPackDetails = [];
