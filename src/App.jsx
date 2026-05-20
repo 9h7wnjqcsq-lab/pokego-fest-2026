@@ -385,12 +385,7 @@ var cityPerks = [
   { text: "獲得特殊活動主題貼圖：旋補給站、開禮物", color: "#ccc" },
 ];
 
-var raidPackDetails = [
-  "每日橘券 9 → 18 張",
-  "每場獲得：+5,000 經驗值",
-  "每場獲得：6 顆糖果",
-  "每場獲得：3 顆 XL 糖果",
-];
+var raidPackDetails = [];
 var eggPackDetails = [
   "孵蛋距離 1/2 → 1/4",
   "每顆孵化經驗值、糖果、星塵 x1.5 → x3",
