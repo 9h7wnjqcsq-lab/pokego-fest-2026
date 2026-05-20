@@ -1107,6 +1107,16 @@ function EventInfo() {
 
   return (
     <div>
+      <div style={CARD}>
+        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 8 }}>
+          <span style={{ color: "#fff", fontSize: 15, fontWeight: 800 }}>選擇場次</span>
+          <span style={{ color: "#888", fontSize: 12 }}>公園遊記</span>
+        </div>
+        <select value={parkSession} onChange={function (e) { setParkSession(e.target.value); }} style={{ background: "rgba(255,255,255,0.08)", border: "1px solid rgba(255,255,255,0.15)", borderRadius: 8, padding: "5px 8px", fontSize: 12, fontWeight: 700, color: parkSession ? "#ffd700" : "rgba(255,255,255,0.4)", cursor: "pointer", outline: "none", width: "100%", WebkitAppearance: "none", appearance: "none" }}>
+          <option value="" style={{ background: "#1a1a2a", color: "#aaa" }}>選擇場次…</option>
+          {parkSessions.map(function (s) { return <option key={s} value={s} style={{ background: "#1a1a2a", color: "#fff" }}>{s}</option>; })}
+        </select>
+      </div>
       <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 12 }}>
         <span style={{ fontSize: 18 }}>🎟</span>
         <span style={{ color: "#ccc", fontSize: 15, fontWeight: 700 }}>票種</span>
@@ -1133,10 +1143,6 @@ function EventInfo() {
           <span style={{ color: "#fff", fontSize: 17, fontWeight: 800 }}>公園遊記</span>
           <span style={{ color: "#888", fontSize: 15, fontWeight: 800 }}>¥4,000</span>
         </div>
-        <select value={parkSession} onChange={function (e) { setParkSession(e.target.value); }} style={{ background: "rgba(255,255,255,0.08)", border: "1px solid rgba(255,255,255,0.15)", borderRadius: 8, padding: "5px 8px", fontSize: 12, fontWeight: 700, color: parkSession ? "#ffd700" : "rgba(255,255,255,0.4)", cursor: "pointer", outline: "none", width: "100%", WebkitAppearance: "none", appearance: "none" }}>
-          <option value="" style={{ background: "#1a1a2a", color: "#aaa" }}>選擇場次…</option>
-          {parkSessions.map(function (s) { return <option key={s} value={s} style={{ background: "#1a1a2a", color: "#fff" }}>{s}</option>; })}
-        </select>
         <PerkList perks={parkPerks} />
       </div>
       <div style={CARD}>
