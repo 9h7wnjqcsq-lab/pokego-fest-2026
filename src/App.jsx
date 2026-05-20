@@ -1124,19 +1124,19 @@ function EventInfo() {
           <div style={{ flex: 1, minWidth: 0 }}>
             <PackCard name="團戰加值包" price="¥2,000" details={raidPackDetails} active={raidPack} onToggle={function () { setRaidPack(function (v) { return !v; }); }} extra={
               <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 6 }}>
-                <div style={{ background: "rgba(0,0,0,0.06)", borderRadius: 8, border: "1px solid rgba(0,0,0,0.1)", padding: "10px 8px", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: 4 }}>
+                <div style={{ background: "rgba(0,0,0,0.06)", borderRadius: 8, border: "none", padding: "10px 8px", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: 4 }}>
                   <img src="/icons/ticket.svg" style={{ width: 32, height: 32, objectFit: "contain" }} alt="ticket" />
                   <span style={{ color: "#555", fontSize: 11, textAlign: "center" }}>9 → 18<br />daily</span>
                 </div>
-                <div style={{ background: "rgba(0,0,0,0.06)", borderRadius: 8, border: "1px solid rgba(0,0,0,0.1)", padding: "10px 8px", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: 4 }}>
+                <div style={{ background: "rgba(0,0,0,0.06)", borderRadius: 8, border: "none", padding: "10px 8px", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: 4 }}>
                   <span style={{ color: "#888", fontSize: 13, fontWeight: 700, lineHeight: "32px" }}>XP</span>
                   <span style={{ color: "#555", fontSize: 11, textAlign: "center" }}>+5,000<br />per raid</span>
                 </div>
-                <div style={{ background: "rgba(0,0,0,0.06)", borderRadius: 8, border: "1px solid rgba(0,0,0,0.1)", padding: "10px 8px", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: 4 }}>
+                <div style={{ background: "rgba(0,0,0,0.06)", borderRadius: 8, border: "none", padding: "10px 8px", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: 4 }}>
                   <img src="/icons/candy.svg" style={{ width: 32, height: 32, objectFit: "contain" }} alt="candy" />
                   <span style={{ color: "#555", fontSize: 11, textAlign: "center" }}>+6<br />per raid</span>
                 </div>
-                <div style={{ background: "rgba(0,0,0,0.06)", borderRadius: 8, border: "1px solid rgba(0,0,0,0.1)", padding: "10px 8px", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: 4 }}>
+                <div style={{ background: "rgba(0,0,0,0.06)", borderRadius: 8, border: "none", padding: "10px 8px", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: 4 }}>
                   <img src="/icons/candy.svg" style={{ width: 32, height: 32, objectFit: "contain" }} alt="candy" />
                   <span style={{ color: "#555", fontSize: 11, textAlign: "center" }}>+3 XL<br />per raid</span>
                 </div>
@@ -1146,19 +1146,19 @@ function EventInfo() {
           <div style={{ flex: 1, minWidth: 0 }}>
             <PackCard name="孵蛋加值包" price="¥2,000" details={eggPackDetails} active={eggPack} onToggle={function () { setEggPack(function (v) { return !v; }); }} extra={
               <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 6 }}>
-                <div style={{ background: "rgba(0,0,0,0.06)", borderRadius: 8, border: "1px solid rgba(0,0,0,0.1)", padding: "10px 8px", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: 4 }}>
+                <div style={{ background: "rgba(0,0,0,0.06)", borderRadius: 8, border: "none", padding: "10px 8px", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: 4 }}>
                   <img src="/icons/hatch.svg" style={{ width: 32, height: 32, objectFit: "contain" }} alt="hatch" />
                   <span style={{ color: "#555", fontSize: 11, textAlign: "center" }}>1/2 → 1/4<br />distance</span>
                 </div>
-                <div style={{ background: "rgba(0,0,0,0.06)", borderRadius: 8, border: "1px solid rgba(0,0,0,0.1)", padding: "10px 8px", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: 4 }}>
+                <div style={{ background: "rgba(0,0,0,0.06)", borderRadius: 8, border: "none", padding: "10px 8px", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: 4 }}>
                   <span style={{ color: "#888", fontSize: 13, fontWeight: 700, lineHeight: "32px" }}>XP</span>
                   <span style={{ color: "#555", fontSize: 11, textAlign: "center" }}>x1.5 → x3<br />per egg</span>
                 </div>
-                <div style={{ background: "rgba(0,0,0,0.06)", borderRadius: 8, border: "1px solid rgba(0,0,0,0.1)", padding: "10px 8px", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: 4 }}>
+                <div style={{ background: "rgba(0,0,0,0.06)", borderRadius: 8, border: "none", padding: "10px 8px", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: 4 }}>
                   <img src="/icons/candy.svg" style={{ width: 32, height: 32, objectFit: "contain" }} alt="candy" />
                   <span style={{ color: "#555", fontSize: 11, textAlign: "center" }}>x1.5 → x3<br />per egg</span>
                 </div>
-                <div style={{ background: "rgba(0,0,0,0.06)", borderRadius: 8, border: "1px solid rgba(0,0,0,0.1)", padding: "10px 8px", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: 4 }}>
+                <div style={{ background: "rgba(0,0,0,0.06)", borderRadius: 8, border: "none", padding: "10px 8px", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: 4 }}>
                   <img src="/icons/dust.svg" style={{ width: 32, height: 32, objectFit: "contain" }} alt="dust" />
                   <span style={{ color: "#555", fontSize: 11, textAlign: "center" }}>x1.5 → x3<br />per egg</span>
                 </div>
