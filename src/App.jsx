@@ -1063,7 +1063,7 @@ function WildCard(props) {
 
 // ── PackCard ─────────────────────────────────────────────────────────────────
 function PackCard(props) {
-  var name = props.name, price = props.price, details = props.details, active = props.active, onToggle = props.onToggle;
+  var name = props.name, price = props.price, details = props.details, active = props.active, onToggle = props.onToggle, extra = props.extra;
   var dc = name === "團戰加值包" ? "#7ecfff" : name === "孵蛋加值包" ? "#7ac74c" : "#ccc";
   return (
     <button onClick={onToggle} style={{ width: "100%", textAlign: "left", cursor: "pointer", WebkitTapHighlightColor: "transparent", background: active ? "rgba(255,215,0,0.1)" : "rgba(255,255,255,0.06)", borderRadius: 12, marginBottom: 10, border: "1px solid " + (active ? "rgba(255,215,0,0.4)" : "rgba(255,255,255,0.08)"), padding: "12px 14px", transition: "all 0.15s" }}>
@@ -1080,6 +1080,7 @@ function PackCard(props) {
           );
         })}
       </ul>
+      {extra ? <div style={{ marginTop: 8 }}>{extra}</div> : null}
     </button>
   );
 }
@@ -1129,20 +1130,16 @@ function EventInfo() {
         </div>
         <div style={{ display: "flex", gap: 8, marginTop: 10 }}>
           <div style={{ flex: 1, minWidth: 0 }}>
-            <PackCard name="團戰加值包" price="¥2,000" details={raidPackDetails} active={raidPack} onToggle={function () { setRaidPack(function (v) { return !v; }); }} />
+            <PackCard name="團戰加值包" price="¥2,000" details={raidPackDetails} active={raidPack} onToggle={function () { setRaidPack(function (v) { return !v; }); }} extra={
+              <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 6 }}>
+                {["Placeholder 1", "Placeholder 2", "Placeholder 3", "Placeholder 4"].map(function (label) {
+                  return <div key={label} style={{ background: "rgba(0,0,0,0.06)", borderRadius: 8, border: "1px solid rgba(0,0,0,0.1)", padding: "10px 8px", textAlign: "center", color: "#888", fontSize: 12 }}>{label}</div>;
+                })}
+              </div>
+            } />
           </div>
           <div style={{ flex: 1, minWidth: 0 }}>
             <PackCard name="孵蛋加值包" price="¥2,000" details={eggPackDetails} active={eggPack} onToggle={function () { setEggPack(function (v) { return !v; }); }} />
-          </div>
-        </div>
-        <div style={{ background: "rgba(0,0,0,0.04)", borderRadius: 10, border: "1px solid rgba(0,0,0,0.08)", padding: "10px 12px", marginTop: 8 }}>
-          <div style={{ color: "#1a1a2a", fontSize: 13, fontWeight: 700, marginBottom: 8 }}>團戰加值包</div>
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 6 }}>
-            {["Placeholder 1", "Placeholder 2", "Placeholder 3", "Placeholder 4"].map(function (label) {
-              return (
-                <div key={label} style={{ background: "rgba(0,0,0,0.06)", borderRadius: 8, border: "1px solid rgba(0,0,0,0.1)", padding: "10px 8px", textAlign: "center", color: "#888", fontSize: 12 }}>{label}</div>
-              );
-            })}
           </div>
         </div>
         {hasSelection ? (
