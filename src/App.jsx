@@ -838,6 +838,7 @@ function UnownCard(props) {
   }
 
   var caughtCount = allForms.filter(function (f) { return Object.values(tog[f]).some(Boolean); }).length;
+  var shinyCount = allForms.filter(function (f) { return tog[f].shiny; }).length;
   var hl = HIGHLIGHT[mon.bg] || { bg: "rgba(255,255,255,0.22)", border: "rgba(255,255,255,0.4)", text: "#fff" };
   var isLight = !!hl.light;
   var textPrimary = hl.cardText || "#fff";
@@ -918,7 +919,10 @@ function UnownCard(props) {
             <div style={{ color: textSecondary, fontSize: 10, lineHeight: 1, marginBottom: 5 }}>{mon.nameEN}</div>
             <div style={{ display: "flex", gap: 3 }}><TypeBadge type={mon.types[0]} /></div>
           </div>
-          <span style={{ color: isLight ? "rgba(0,0,0,0.4)" : "#888", fontSize: 12, flexShrink: 0 }}>已捕捉 <span style={{ color: textPrimary, fontWeight: 700 }}>{caughtCount}</span> / {mon.total} 種</span>
+          <div style={{ display: "flex", flexDirection: "column", alignItems: "flex-end", gap: 3, flexShrink: 0 }}>
+            <span style={{ color: isLight ? "rgba(0,0,0,0.4)" : "#888", fontSize: 12 }}>已捕捉 <span style={{ color: textPrimary, fontWeight: 700 }}>{caughtCount}</span> / {mon.total} 種</span>
+            <span style={{ color: isLight ? "rgba(0,0,0,0.4)" : "#888", fontSize: 12 }}>✨ 已捕捉 <span style={{ color: textPrimary, fontWeight: 700 }}>{shinyCount}</span> / {mon.total} 種</span>
+          </div>
         </div>
         <div style={{ display: "flex", gap: 0, margin: "10px 12px 0", background: isLight ? "rgba(0,0,0,0.07)" : "rgba(255,255,255,0.07)", borderRadius: 100, padding: 4 }}>
           {groups.map(function (g, i) {
