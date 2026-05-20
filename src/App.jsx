@@ -1115,9 +1115,9 @@ function EventInfo() {
           <option value="" style={{ background: "#1a1a2a", color: "#aaa" }}>選擇場次…</option>
           {parkSessions.map(function (s) { return <option key={s} value={s} style={{ background: "#1a1a2a", color: "#fff" }}>{s}</option>; })}
         </select>
-        <div style={{ margin: "12px 0 8px" }}>
+        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", margin: "12px 0 8px" }}>
           <span style={{ color: "#1a1a2a", fontSize: 15, fontWeight: 800 }}>城市遊記（街上樂遊加值包）</span>
-          {parkDay ? <div style={{ color: "#888", fontSize: 11, marginTop: 3 }}>{parkDay} 已包含於公園遊記場次</div> : null}
+          {parkDay ? <span style={{ color: "#888", fontSize: 11 }}>{parkDay} 已包含於公園遊記場次</span> : null}
         </div>
         <div style={{ display: "flex", gap: 6 }}>
           {availableDays.map(function (d) {
