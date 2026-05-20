@@ -1126,6 +1126,14 @@ function EventInfo() {
             );
           })}
         </div>
+        <div style={{ display: "flex", gap: 8, marginTop: 10 }}>
+          <div style={{ flex: 1, minWidth: 0 }}>
+            <PackCard name="團戰加值包" price="¥2,000" details={raidPackDetails} active={raidPack} onToggle={function () { setRaidPack(function (v) { return !v; }); }} />
+          </div>
+          <div style={{ flex: 1, minWidth: 0 }}>
+            <PackCard name="孵蛋加值包" price="¥2,000" details={eggPackDetails} active={eggPack} onToggle={function () { setEggPack(function (v) { return !v; }); }} />
+          </div>
+        </div>
         {hasSelection ? (
           <div style={{ marginTop: 12, borderTop: "1px solid rgba(0,0,0,0.1)", paddingTop: 10 }}>
             <div style={{ display: "flex", justifyContent: "flex-end", marginBottom: 6 }}>
@@ -1165,21 +1173,6 @@ function EventInfo() {
           <span style={{ color: selectedCityDays.length > 0 ? "#ffd700" : "#888" }}>10:00 - 20:00</span>
         </div>
         <PerkList perks={cityPerks} />
-      </div>
-      <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 8, margin: "20px 0 12px" }}>
-        <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
-          <span style={{ fontSize: 18 }}>📦</span>
-          <span style={{ color: "#1a1a2a", fontSize: 15, fontWeight: 700 }}>加值包</span>
-        </div>
-        <span style={{ color: (raidPack || eggPack) ? "#ffd700" : "#888", fontSize: 11 }}>適用於 5/25 - 6/1 期間</span>
-      </div>
-      <div style={{ display: "flex", gap: 8 }}>
-        <div style={{ flex: 1, minWidth: 0 }}>
-          <PackCard name="團戰加值包" price="¥2,000" details={raidPackDetails} active={raidPack} onToggle={function () { setRaidPack(function (v) { return !v; }); }} />
-        </div>
-        <div style={{ flex: 1, minWidth: 0 }}>
-          <PackCard name="孵蛋加值包" price="¥2,000" details={eggPackDetails} active={eggPack} onToggle={function () { setEggPack(function (v) { return !v; }); }} />
-        </div>
       </div>
     </div>
   );
