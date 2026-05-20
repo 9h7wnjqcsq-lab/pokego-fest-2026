@@ -1173,8 +1173,14 @@ function EventInfo() {
         </div>
         <span style={{ color: (raidPack || eggPack) ? "#ffd700" : "#888", fontSize: 11 }}>適用於 5/25 - 6/1 期間</span>
       </div>
-      <PackCard name="團戰加值包" price="¥2,000" details={raidPackDetails} active={raidPack} onToggle={function () { setRaidPack(function (v) { return !v; }); }} />
-      <PackCard name="孵蛋加值包" price="¥2,000" details={eggPackDetails} active={eggPack} onToggle={function () { setEggPack(function (v) { return !v; }); }} />
+      <div style={{ display: "flex", gap: 8 }}>
+        <div style={{ flex: 1, minWidth: 0 }}>
+          <PackCard name="團戰加值包" price="¥2,000" details={raidPackDetails} active={raidPack} onToggle={function () { setRaidPack(function (v) { return !v; }); }} />
+        </div>
+        <div style={{ flex: 1, minWidth: 0 }}>
+          <PackCard name="孵蛋加值包" price="¥2,000" details={eggPackDetails} active={eggPack} onToggle={function () { setEggPack(function (v) { return !v; }); }} />
+        </div>
+      </div>
     </div>
   );
 }
