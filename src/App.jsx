@@ -1111,7 +1111,7 @@ function EventInfo() {
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 8 }}>
           <span style={{ color: "#1a1a2a", fontSize: 15, fontWeight: 800 }}>公園遊記</span>
         </div>
-        <select value={parkSession} onChange={function (e) { setParkSession(e.target.value); }} style={{ background: "rgba(255,255,255,0.08)", border: "1px solid rgba(255,255,255,0.15)", borderRadius: 8, padding: "5px 8px", fontSize: 12, fontWeight: 700, color: parkSession ? "#ffd700" : "rgba(255,255,255,0.4)", cursor: "pointer", outline: "none", width: "100%", WebkitAppearance: "none", appearance: "none" }}>
+        <select value={parkSession} onChange={function (e) { setParkSession(e.target.value); }} style={{ background: "rgba(0,0,0,0.06)", border: "1px solid rgba(0,0,0,0.15)", borderRadius: 8, padding: "5px 8px", fontSize: 12, fontWeight: 700, color: parkSession ? "#b8860b" : "rgba(0,0,0,0.45)", cursor: "pointer", outline: "none", width: "100%", WebkitAppearance: "none", appearance: "none" }}>
           <option value="" style={{ background: "#1a1a2a", color: "#aaa" }}>選擇場次…</option>
           {parkSessions.map(function (s) { return <option key={s} value={s} style={{ background: "#1a1a2a", color: "#fff" }}>{s}</option>; })}
         </select>
@@ -1122,12 +1122,12 @@ function EventInfo() {
         <div style={{ display: "flex", gap: 6 }}>
           {availableDays.map(function (d) {
             return (
-              <button key={d} onClick={function () { toggleCity(d); }} style={{ flex: 1, padding: "12px 0", borderRadius: 8, fontSize: 12, fontWeight: 700, cursor: "pointer", background: cityDays[d] ? "rgba(255,215,0,0.15)" : "rgba(255,255,255,0.07)", color: cityDays[d] ? "#ffd700" : "rgba(255,255,255,0.4)", border: "1px solid " + (cityDays[d] ? "rgba(255,215,0,0.5)" : "rgba(255,255,255,0.12)"), transition: "all 0.15s", WebkitTapHighlightColor: "transparent", touchAction: "manipulation" }}>{d}</button>
+              <button key={d} onClick={function () { toggleCity(d); }} style={{ flex: 1, padding: "12px 0", borderRadius: 8, fontSize: 12, fontWeight: 700, cursor: "pointer", background: cityDays[d] ? "rgba(255,215,0,0.2)" : "rgba(0,0,0,0.06)", color: cityDays[d] ? "#b8860b" : "rgba(0,0,0,0.5)", border: "1px solid " + (cityDays[d] ? "rgba(184,134,11,0.5)" : "rgba(0,0,0,0.15)"), transition: "all 0.15s", WebkitTapHighlightColor: "transparent", touchAction: "manipulation" }}>{d}</button>
             );
           })}
         </div>
         {hasSelection ? (
-          <div style={{ marginTop: 12, borderTop: "1px solid rgba(255,255,255,0.08)", paddingTop: 10 }}>
+          <div style={{ marginTop: 12, borderTop: "1px solid rgba(0,0,0,0.1)", paddingTop: 10 }}>
             <div style={{ display: "flex", justifyContent: "flex-end", marginBottom: 6 }}>
               <span style={{ color: "#ffd700", fontSize: 15, fontWeight: 800 }}>{"¥" + total.toLocaleString()}</span>
             </div>
