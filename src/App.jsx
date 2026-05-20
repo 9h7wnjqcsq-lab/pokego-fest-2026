@@ -386,10 +386,7 @@ var cityPerks = [
 ];
 
 var raidPackDetails = [];
-var eggPackDetails = [
-  "孵蛋距離 1/2 → 1/4",
-  "每顆孵化經驗值、糖果、星塵 x1.5 → x3",
-];
+var eggPackDetails = [];
 var UNOWN_FORMS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ!?".split("");
 
 var CARD = {
