@@ -894,10 +894,10 @@ function UnownCard(props) {
   var carouselRef = useRef(null);
   var sg_s = useState(0); var selectedGroup = sg_s[0], setSelectedGroup = sg_s[1];
   var groups = [
-    { label: "A – G", forms: ["A","B","C","D","E","F","G"] },
-    { label: "H – N", forms: ["H","I","J","K","L","M","N"] },
-    { label: "O – U", forms: ["O","P","Q","R","S","T","U"] },
-    { label: "V – ?", forms: ["V","W","X","Y","Z","!","?"] },
+    { label: "A B C D E F G", forms: ["A","B","C","D","E","F","G"] },
+    { label: "H I J K L M N", forms: ["H","I","J","K","L","M","N"] },
+    { label: "O P Q R S T U", forms: ["O","P","Q","R","S","T","U"] },
+    { label: "V W X Y Z ! ?", forms: ["V","W","X","Y","Z","!","?"] },
   ];
   function scrollToGroup(i) {
     setSelectedGroup(i);
