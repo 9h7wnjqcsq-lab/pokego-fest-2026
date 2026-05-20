@@ -1092,6 +1092,7 @@ function EventInfo() {
   var ep = useState(false); var eggPack = ep[0], setEggPack = ep[1];
 
   var parkDay = parkSession ? parkSession.split(" ")[0] : null;
+  var parkCityTime = parkSession ? (parkSession.includes("10:00") ? "15:00-20:00" : "10:00-15:00") : null;
   var availableDays = allDays.filter(function (d) { return d !== parkDay; });
   function toggleCity(d) { setCityDays(function (p) { var n = Object.assign({}, p); n[d] = !p[d]; return n; }); }
   var selectedCityDays = availableDays.filter(function (d) { return cityDays[d]; });
@@ -1109,7 +1110,7 @@ function EventInfo() {
     <div>
       <div style={CARD}>
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 8 }}>
-          <span style={{ color: "#1a1a2a", fontSize: 15, fontWeight: 800 }}>公園遊記</span>
+          <span style={{ color: "#1a1a2a", fontSize: 15, fontWeight: 800 }}>公園遊記（主票券）</span>
         </div>
         <select value={parkSession} onChange={function (e) { setParkSession(e.target.value); }} style={{ background: "rgba(0,0,0,0.06)", border: "1px solid rgba(0,0,0,0.15)", borderRadius: 8, padding: "5px 8px", fontSize: 12, fontWeight: 700, color: parkSession ? "#b8860b" : "rgba(0,0,0,0.45)", cursor: "pointer", outline: "none", width: "100%", WebkitAppearance: "none", appearance: "none" }}>
           <option value="" style={{ background: "#1a1a2a", color: "#aaa" }}>選擇場次…</option>
@@ -1117,7 +1118,7 @@ function EventInfo() {
         </select>
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", margin: "12px 0 8px" }}>
           <span style={{ color: "#1a1a2a", fontSize: 15, fontWeight: 800 }}>城市遊記（街上樂遊加值包）</span>
-          {parkDay ? <span style={{ color: "#888", fontSize: 11 }}>{parkDay} 已包含於公園遊記場次</span> : null}
+          {parkDay ? <span style={{ color: "#888", fontSize: 11 }}>{parkDay} 城市遊記 {parkCityTime} 已包含在主票券內容</span> : null}
         </div>
         <div style={{ display: "flex", gap: 6 }}>
           {availableDays.map(function (d) {
