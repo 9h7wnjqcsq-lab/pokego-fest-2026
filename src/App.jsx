@@ -862,7 +862,7 @@ function UnownCard(props) {
     var form = rowProps.form, t = tog[form], anyActive = Object.values(t).some(Boolean);
     return (
       <div style={{ display: "flex", alignItems: "center", gap: 3, marginBottom: 5, width: "100%" }}>
-        <div style={{ color: anyActive ? hl.text : (isLight ? "rgba(0,0,0,0.3)" : "#aaa"), fontSize: 13, fontWeight: 700, width: 14, textAlign: "center", flexShrink: 0 }}>
+        <div style={{ color: anyActive ? hl.text : (isLight ? "rgba(0,0,0,0.3)" : "#aaa"), fontSize: 13, fontWeight: 700, width: 14, textAlign: "left", flexShrink: 0 }}>
           {form === "!" ? "！" : form === "?" ? "？" : form}
         </div>
         <img
@@ -929,10 +929,10 @@ function UnownCard(props) {
             );
           })}
         </div>
-        <div ref={carouselRef} className="strip-hide-sb" onScroll={onCarouselScroll} style={{ display: "flex", overflowX: "auto", scrollSnapType: "x mandatory", scrollbarWidth: "none", WebkitOverflowScrolling: "touch", padding: "10px 12px 6px" }}>
+        <div ref={carouselRef} className="strip-hide-sb" onScroll={onCarouselScroll} style={{ display: "flex", overflowX: "auto", scrollSnapType: "x mandatory", scrollbarWidth: "none", WebkitOverflowScrolling: "touch", paddingTop: 10, paddingBottom: 6 }}>
           {groups.map(function (g, gi) {
             return (
-              <div key={gi} style={{ flexShrink: 0, width: "100%", scrollSnapAlign: "start" }}>
+              <div key={gi} style={{ flexShrink: 0, width: "100%", scrollSnapAlign: "start", paddingLeft: 12, paddingRight: 12, boxSizing: "border-box" }}>
                 {g.forms.map(function (f) { return <FormRow key={f} form={f} />; })}
               </div>
             );
