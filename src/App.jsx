@@ -1068,7 +1068,7 @@ function PackCard(props) {
   return (
     <button onClick={onToggle} style={{ width: "100%", textAlign: "left", cursor: "pointer", WebkitTapHighlightColor: "transparent", background: active ? "rgba(255,215,0,0.1)" : "rgba(255,255,255,0.06)", borderRadius: 12, marginBottom: 10, border: "1px solid " + (active ? "rgba(255,215,0,0.4)" : "rgba(255,255,255,0.08)"), padding: "12px 14px", transition: "all 0.15s" }}>
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 6 }}>
-        <span style={{ color: "#fff", fontSize: 17, fontWeight: 800 }}>{name}</span>
+        <span style={{ color: "#1a1a2a", fontSize: 15, fontWeight: 800 }}>{name}</span>
         <span style={{ color: "#888", fontSize: 15, fontWeight: 800 }}>{price}</span>
       </div>
       <ul style={{ margin: 0, paddingLeft: 0, listStyle: "none", fontSize: 14, lineHeight: 1.4 }}>
@@ -1116,7 +1116,7 @@ function EventInfo() {
           {parkSessions.map(function (s) { return <option key={s} value={s} style={{ background: "#1a1a2a", color: "#fff" }}>{s}</option>; })}
         </select>
         <div style={{ margin: "12px 0 8px" }}>
-          <span style={{ color: "#888", fontSize: 12 }}>城市遊記（街上樂遊加值包）</span>
+          <span style={{ color: "#1a1a2a", fontSize: 15, fontWeight: 800 }}>城市遊記（街上樂遊加值包）</span>
           {parkDay ? <div style={{ color: "#888", fontSize: 11, marginTop: 3 }}>{parkDay} 已包含於公園遊記場次</div> : null}
         </div>
         <div style={{ display: "flex", gap: 6 }}>
