@@ -1128,28 +1128,28 @@ function EventInfo() {
           })}
         </div>
         {selectedCityDays.length > 0 ? <div style={{ marginTop: 4, color: "#ffd700", fontSize: 11, fontWeight: 700, textAlign: "right" }}>{"已選 " + selectedCityDays.length + " 天 x ¥3,000 = ¥" + (selectedCityDays.length * 3000).toLocaleString()}</div> : null}
+        {hasSelection ? (
+          <div style={{ marginTop: 12, borderTop: "1px solid rgba(255,255,255,0.08)", paddingTop: 10 }}>
+            <div style={{ display: "flex", justifyContent: "flex-end", marginBottom: 6 }}>
+              <span style={{ color: "#ffd700", fontSize: 15, fontWeight: 800 }}>{"¥" + total.toLocaleString()}</span>
+            </div>
+            <div style={{ display: "flex", flexDirection: "column", gap: 3 }}>
+              {breakdown.map(function (item) {
+                return (
+                  <div key={item.label} style={{ display: "flex", justifyContent: "space-between" }}>
+                    <span style={{ color: "#aaa", fontSize: 11 }}>{item.label}</span>
+                    <span style={{ color: "#ffd700", fontSize: 11, fontWeight: 700 }}>{"¥" + item.amount.toLocaleString()}</span>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        ) : null}
       </div>
       <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 12 }}>
         <span style={{ fontSize: 18 }}>🎟</span>
         <span style={{ color: "#ccc", fontSize: 15, fontWeight: 700 }}>票種</span>
       </div>
-      {hasSelection ? (
-        <div style={CARD}>
-          <div style={{ display: "flex", justifyContent: "flex-end", marginBottom: 8 }}>
-            <span style={{ color: "#ffd700", fontSize: 15, fontWeight: 800 }}>{"¥" + total.toLocaleString()}</span>
-          </div>
-          <div style={{ borderTop: "1px solid rgba(255,215,0,0.15)", paddingTop: 6, display: "flex", flexDirection: "column", gap: 3 }}>
-            {breakdown.map(function (item) {
-              return (
-                <div key={item.label} style={{ display: "flex", justifyContent: "space-between" }}>
-                  <span style={{ color: "#aaa", fontSize: 11 }}>{item.label}</span>
-                  <span style={{ color: "#ffd700", fontSize: 11, fontWeight: 700 }}>{"¥" + item.amount.toLocaleString()}</span>
-                </div>
-              );
-            })}
-          </div>
-        </div>
-      ) : null}
       <div style={CARD}>
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 8 }}>
           <span style={{ color: "#fff", fontSize: 17, fontWeight: 800 }}>公園遊記</span>
@@ -1167,27 +1167,6 @@ function EventInfo() {
           <span style={{ color: selectedCityDays.length > 0 ? "#ffd700" : "#888" }}>10:00 - 20:00</span>
         </div>
         <PerkList perks={cityPerks} />
-      </div>
-      <div style={CARD_NO_BORDER}>
-        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 6 }}>
-          <span style={{ color: "#fff", fontSize: 17, fontWeight: 800 }}>無票</span>
-          <span style={{ color: "#888", fontSize: 15, fontWeight: 800 }}>免費</span>
-        </div>
-        <ul style={{ margin: 0, paddingLeft: 0, listStyle: "none", fontSize: 14, lineHeight: 1.4 }}>
-          {[
-            { check: false, text: "無上述任何體驗" },
-            { check: true, text: "可挑戰團體戰頭目" },
-            { check: false, text: "無法遇見異色帕底亞肯泰羅·水瀾" },
-            { check: false, text: "捕捉到的團戰寶可夢不會有任何背卡" },
-          ].map(function (item) {
-            return (
-              <li key={item.text} style={{ display: "flex", alignItems: "baseline", gap: 8, padding: "3px 0", color: "#ccc" }}>
-                <span style={{ flexShrink: 0, fontSize: 13, fontWeight: 700, lineHeight: 1, color: item.check ? "#4caf6e" : "#c0392b" }}>{item.check ? "✓" : "✕"}</span>
-                <span>{item.text}</span>
-              </li>
-            );
-          })}
-        </ul>
       </div>
       <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 8, margin: "20px 0 12px" }}>
         <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
