@@ -1127,7 +1127,6 @@ function EventInfo() {
             );
           })}
         </div>
-        {selectedCityDays.length > 0 ? <div style={{ marginTop: 4, color: "#ffd700", fontSize: 11, fontWeight: 700, textAlign: "right" }}>{"已選 " + selectedCityDays.length + " 天 x ¥3,000 = ¥" + (selectedCityDays.length * 3000).toLocaleString()}</div> : null}
         {hasSelection ? (
           <div style={{ marginTop: 12, borderTop: "1px solid rgba(255,255,255,0.08)", paddingTop: 10 }}>
             <div style={{ display: "flex", justifyContent: "flex-end", marginBottom: 6 }}>
