@@ -1137,7 +1137,7 @@ function EventInfo() {
                   <span style={{ color: "#555", fontSize: 11, textAlign: "center" }}>9 → 18<br />daily</span>
                 </div>
                 <div style={{ background: "rgba(0,0,0,0.06)", borderRadius: 8, border: "1px solid rgba(0,0,0,0.1)", padding: "10px 8px", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: 4 }}>
-                  <span style={{ color: "#888", fontSize: 13, fontWeight: 700 }}>XP</span>
+                  <span style={{ color: "#888", fontSize: 13, fontWeight: 700, lineHeight: "32px" }}>XP</span>
                   <span style={{ color: "#555", fontSize: 11, textAlign: "center" }}>+5,000<br />per raid</span>
                 </div>
                 <div style={{ background: "rgba(0,0,0,0.06)", borderRadius: 8, border: "1px solid rgba(0,0,0,0.1)", padding: "10px 8px", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: 4 }}>
