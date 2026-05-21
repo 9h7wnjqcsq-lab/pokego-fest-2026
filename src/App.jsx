@@ -357,16 +357,16 @@ var parkSessions = [
 var allDays = ["5/25", "5/26", "5/27", "5/28", "5/29", "5/30", "5/31", "6/1"];
 
 var parkPerks = [
-  { text: "活動主題田野調查｜野外遭遇主題寶可夢｜異色機率提升｜捕捉糖果加倍", color: "#ccc" },
+  { text: "活動主題田野調查｜野外遭遇主題寶可夢｜異色機率提升｜捕捉糖果加倍", color: "#555" },
   { text: "團體戰每日入場券 9 張｜以紀念球成功捕捉寶可夢的機率提高", color: "#7ecfff" },
   { text: "特殊蛋｜孵蛋距離 1/2｜每顆孵化：糖果、星塵 x1.5", color: "#7ac74c" },
   { text: "交換星塵減半｜小隊合作時間延長｜每日特殊交換 6 次｜城市體驗活動期間，每日最多可開啟 50 個友情禮物", color: "#f95587" },
 ];
 
 var cityPerks = [
-  { text: "異色機率提升｜捕捉糖果加倍｜小隊合作時間延長", color: "#ccc" },
-  { text: "誘餌模組效果：2小時｜薰香效果延長：2小時", color: "#ccc" },
-  { text: "每小時領取活動主題田野調查｜獲得特殊活動主題貼圖：旋補給站、開禮物", color: "#ccc" },
+  { text: "異色機率提升｜捕捉糖果加倍｜小隊合作時間延長", color: "#555" },
+  { text: "誘餌模組效果：2小時｜薰香效果延長：2小時", color: "#555" },
+  { text: "每小時領取活動主題田野調查｜獲得特殊活動主題貼圖：旋補給站、開禮物", color: "#555" },
 ];
 
 var raidPackDetails = [];
@@ -621,7 +621,6 @@ function PerkList(props) {
       {props.perks.map(function (p) {
         return (
           <li key={p.text} style={{ display: "flex", alignItems: "baseline", gap: 8, padding: "3px 0", color: p.color }}>
-            <span style={{ flexShrink: 0, fontSize: 13, color: "#4caf6e", fontWeight: 700, lineHeight: 1 }}>✓</span>
             <span>{p.text}</span>
           </li>
         );
@@ -707,7 +706,7 @@ function RaidRow(props) {
   var lightColors = ["ELECTRIC", "ICE", "GRASS", "STEEL", "NORMAL", "ROCK"];
 
   return (
-    <div style={{ marginBottom: 10, borderRadius: 16, border: "1px solid rgba(255,255,255,0.07)", overflow: "hidden", backgroundColor: raid.bg }}>
+    <div style={{ marginBottom: 10, borderRadius: 16, border: "1px solid rgba(255,255,255,0.15)", overflow: "hidden", background: "linear-gradient(rgba(255,255,255,0.18), rgba(255,255,255,0.18)), " + raid.bg }}>
       <div
         style={{ display: "grid", gridTemplateColumns: "60px auto 1fr auto", alignItems: "center", gap: "0 12px", padding: "14px", cursor: "pointer", WebkitTapHighlightColor: "transparent", touchAction: "manipulation" }}
         onClick={function () { setExpanded(function (e) { return !e; }); }}
@@ -720,7 +719,7 @@ function RaidRow(props) {
         />
         <div style={{ display: "flex", flexDirection: "column", gap: 5, alignItems: "flex-start" }}>
           <div style={{ color: "#fff", fontSize: 13, fontWeight: 800, borderRadius: 6, padding: "2px 5px", whiteSpace: "nowrap", background: "rgba(255,255,255,0.08)", minWidth: 58, textAlign: "center", fontFamily: "'Share Tech Mono',monospace" }}>{raid.cp1}</div>
-          <div style={{ color: "#ffd700", fontSize: 13, fontWeight: 800, borderRadius: 6, padding: "2px 5px", whiteSpace: "nowrap", background: "rgba(255,215,0,0.1)", minWidth: 58, textAlign: "center", fontFamily: "'Share Tech Mono',monospace" }}>{raid.cp2}</div>
+          <div style={{ color: "#b8860b", fontSize: 13, fontWeight: 800, borderRadius: 6, padding: "2px 5px", whiteSpace: "nowrap", background: "rgba(255,215,0,0.1)", minWidth: 58, textAlign: "center", fontFamily: "'Share Tech Mono',monospace" }}>{raid.cp2}</div>
         </div>
         <div>
           <div style={{ color: "#fff", fontSize: 16, fontWeight: 800, lineHeight: 1.2, whiteSpace: "pre-line" }}>{raid.nameCN}</div>
@@ -994,7 +993,7 @@ function WildCard(props) {
   var isLight = !!hl.light;
   var textPrimary = hl.cardText || "#fff";
   var textSecondary = isLight ? hl.cardSubText : "#666";
-  var cardBorder = isLight ? "1px solid rgba(0,0,0,0.08)" : "1px solid rgba(255,255,255,0.07)";
+  var cardBorder = "none";
   var btnInactiveBg = isLight ? "rgba(0,0,0,0.06)" : "rgba(255,255,255,0.08)";
   var btnInactiveColor = isLight ? "rgba(0,0,0,0.35)" : "rgba(255,255,255,0.35)";
   var btnInactiveBorder = isLight ? "rgba(0,0,0,0.12)" : "rgba(255,255,255,0.12)";
@@ -1042,11 +1041,7 @@ function PackCard(props) {
   var name = props.name, price = props.price, details = props.details, active = props.active, onToggle = props.onToggle, extra = props.extra;
   var dc = name === "團戰加值包" ? "#7ecfff" : name === "孵蛋加值包" ? "#7ac74c" : "#ccc";
   return (
-    <button onClick={onToggle} style={{ width: "100%", textAlign: "left", cursor: "pointer", WebkitTapHighlightColor: "transparent", background: active ? "rgba(255,215,0,0.1)" : "rgba(255,255,255,0.06)", borderRadius: 12, marginBottom: 10, border: "1px solid " + (active ? "rgba(255,215,0,0.4)" : "rgba(255,255,255,0.08)"), padding: "12px 14px", transition: "all 0.15s" }}>
-      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 6 }}>
-        <span style={{ color: "#1a1a2a", fontSize: 15, fontWeight: 800 }}>{name}</span>
-        <span style={{ color: "#888", fontSize: 15, fontWeight: 800 }}>{price}</span>
-      </div>
+    <button onClick={onToggle} style={{ width: "100%", textAlign: "left", cursor: "pointer", WebkitTapHighlightColor: "transparent", background: active ? "#fbcb57" : "rgba(0,0,0,0.06)", borderRadius: 12, marginBottom: 10, border: "1px solid " + (active ? "#d4a017" : "rgba(0,0,0,0.15)"), padding: "12px 14px", transition: "all 0.15s", fontFamily: "'Chakra Petch','Noto Sans TC',sans-serif" }}>
       <ul style={{ margin: 0, paddingLeft: 0, listStyle: "none", fontSize: 14, lineHeight: 1.4 }}>
         {details.map(function (p, i) {
           return (
@@ -1062,9 +1057,9 @@ function PackCard(props) {
 }
 
 // ── EventInfo ────────────────────────────────────────────────────────────────
-function EventInfo() {
+function EventInfo(props) {
+  var cityDays = props.cityDays; var setCityDays = props.setCityDays;
   var ps = useState(""); var parkSession = ps[0], setParkSession = ps[1];
-  var cd = useState({}); var cityDays = cd[0], setCityDays = cd[1];
   var rp = useState(false); var raidPack = rp[0], setRaidPack = rp[1];
   var ep = useState(false); var eggPack = ep[0], setEggPack = ep[1];
 
@@ -1089,24 +1084,25 @@ function EventInfo() {
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 8 }}>
           <span style={{ color: "#1a1a2a", fontSize: 15, fontWeight: 800 }}>公園遊記（主票券）</span>
         </div>
-        <select value={parkSession} onChange={function (e) { setParkSession(e.target.value); }} style={{ background: "rgba(0,0,0,0.06)", border: "1px solid rgba(0,0,0,0.15)", borderRadius: 8, padding: "5px 8px", fontSize: 12, fontWeight: 700, color: parkSession ? "#b8860b" : "rgba(0,0,0,0.45)", cursor: "pointer", outline: "none", width: "100%", WebkitAppearance: "none", appearance: "none" }}>
+        <select value={parkSession} onChange={function (e) { setParkSession(e.target.value); }} style={{ background: parkSession ? "#fbcb57" : "rgba(0,0,0,0.06)", border: "1px solid " + (parkSession ? "#d4a017" : "rgba(0,0,0,0.15)"), borderRadius: 8, padding: "5px 8px", fontSize: 12, fontWeight: 700, color: parkSession ? "#10234a" : "rgba(0,0,0,0.45)", cursor: "pointer", outline: "none", width: "100%", WebkitAppearance: "none", appearance: "none", fontFamily: "'Chakra Petch','Noto Sans TC',sans-serif" }}>
           <option value="" style={{ background: "#1a1a2a", color: "#aaa" }}>選擇場次…</option>
           {parkSessions.map(function (s) { return <option key={s} value={s} style={{ background: "#1a1a2a", color: "#fff" }}>{s}</option>; })}
         </select>
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", margin: "12px 0 8px" }}>
           <span style={{ color: "#1a1a2a", fontSize: 15, fontWeight: 800 }}>城市遊記（街上樂遊加值包）</span>
-          {parkDay ? <span style={{ color: "#888", fontSize: 11 }}>{parkDay} 城市遊記 {parkCityTime} 已包含在主票券內</span> : null}
+          {parkDay ? <span style={{ color: "#888", fontSize: 11 }}>{parkDay} 城市遊記 {parkCityTime} 已包含主票券內</span> : null}
         </div>
         <div style={{ display: "flex", gap: 6 }}>
           {availableDays.map(function (d) {
             return (
-              <button key={d} onClick={function () { toggleCity(d); }} style={{ flex: 1, padding: "12px 0", borderRadius: 8, fontSize: 12, fontWeight: 700, cursor: "pointer", background: cityDays[d] ? "rgba(255,215,0,0.2)" : "rgba(0,0,0,0.06)", color: cityDays[d] ? "#b8860b" : "rgba(0,0,0,0.5)", border: "1px solid " + (cityDays[d] ? "rgba(184,134,11,0.5)" : "rgba(0,0,0,0.15)"), transition: "all 0.15s", WebkitTapHighlightColor: "transparent", touchAction: "manipulation" }}>{d}</button>
+              <button key={d} onClick={function () { toggleCity(d); }} style={{ flex: 1, padding: "5px 0", borderRadius: 8, fontSize: 12, fontWeight: 700, cursor: "pointer", background: cityDays[d] ? "#fbcb57" : "rgba(0,0,0,0.06)", color: cityDays[d] ? "#10234a" : "rgba(0,0,0,0.5)", border: "1px solid " + (cityDays[d] ? "#d4a017" : "rgba(0,0,0,0.15)"), transition: "all 0.15s", WebkitTapHighlightColor: "transparent", touchAction: "manipulation", fontFamily: "'Chakra Petch','Noto Sans TC',sans-serif" }}>{d}</button>
             );
           })}
         </div>
         <div style={{ display: "flex", gap: 8, marginTop: 10 }}>
           <div style={{ flex: 1, minWidth: 0 }}>
-            <PackCard name="團戰加值包" price="¥2,000" details={raidPackDetails} active={raidPack} onToggle={function () { setRaidPack(function (v) { return !v; }); }} extra={
+            <div style={{ fontSize: 15, fontWeight: 800, color: "#1a1a2a", marginBottom: 8, paddingLeft: 2 }}>團戰加值包</div>
+            <PackCard name="團戰加值包" price="" details={raidPackDetails} active={raidPack} onToggle={function () { setRaidPack(function (v) { return !v; }); }} extra={
               <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 6 }}>
                 <div style={{ background: "rgba(0,0,0,0.06)", borderRadius: 8, border: "none", padding: "10px 8px", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: 4 }}>
                   <img src="/icons/ticket.svg" style={{ width: 32, height: 32, objectFit: "contain" }} alt="ticket" />
@@ -1128,7 +1124,8 @@ function EventInfo() {
             } />
           </div>
           <div style={{ flex: 1, minWidth: 0 }}>
-            <PackCard name="孵蛋加值包" price="¥2,000" details={eggPackDetails} active={eggPack} onToggle={function () { setEggPack(function (v) { return !v; }); }} extra={
+            <div style={{ fontSize: 15, fontWeight: 800, color: "#1a1a2a", marginBottom: 8, paddingLeft: 2 }}>孵蛋加值包</div>
+            <PackCard name="孵蛋加值包" price="" details={eggPackDetails} active={eggPack} onToggle={function () { setEggPack(function (v) { return !v; }); }} extra={
               <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 6 }}>
                 <div style={{ background: "rgba(0,0,0,0.06)", borderRadius: 8, border: "none", padding: "10px 8px", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: 4 }}>
                   <img src="/icons/hatch.svg" style={{ width: 32, height: 32, objectFit: "contain" }} alt="hatch" />
@@ -1153,14 +1150,14 @@ function EventInfo() {
         {hasSelection ? (
           <div style={{ marginTop: 12, borderTop: "1px solid rgba(0,0,0,0.1)", paddingTop: 10 }}>
             <div style={{ display: "flex", justifyContent: "flex-end", marginBottom: 6 }}>
-              <span style={{ color: "#ffd700", fontSize: 15, fontWeight: 800 }}>{"¥" + total.toLocaleString()}</span>
+              <span style={{ color: "#c9960f", fontSize: 15, fontWeight: 800 }}>{"¥" + total.toLocaleString()}</span>
             </div>
             <div style={{ display: "flex", flexDirection: "column", gap: 3 }}>
               {breakdown.map(function (item) {
                 return (
                   <div key={item.label} style={{ display: "flex", justifyContent: "space-between" }}>
                     <span style={{ color: "#aaa", fontSize: 11 }}>{item.label}</span>
-                    <span style={{ color: "#ffd700", fontSize: 11, fontWeight: 700 }}>{"¥" + item.amount.toLocaleString()}</span>
+                    {item.amount ? <span style={{ color: "#b8860b", fontSize: 11, fontWeight: 700 }}>{"¥" + item.amount.toLocaleString()}</span> : null}
                   </div>
                 );
               })}
@@ -1168,21 +1165,15 @@ function EventInfo() {
           </div>
         ) : null}
       </div>
-      <div style={CARD}>
+      <div style={{ background: "#fff", borderRadius: 12, marginBottom: 10, marginLeft: 14, marginRight: 14, border: "none", padding: "12px 14px", boxShadow: "0 1px 4px rgba(0,0,0,0.06)" }}>
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 8 }}>
           <span style={{ color: "#1a1a2a", fontSize: 17, fontWeight: 800 }}>公園遊記</span>
-          <span style={{ color: "#888", fontSize: 15, fontWeight: 800 }}>¥4,000</span>
         </div>
         <PerkList perks={parkPerks} />
       </div>
-      <div style={CARD}>
+      <div style={{ background: "#fff", borderRadius: 12, marginBottom: 10, marginLeft: 14, marginRight: 14, border: "none", padding: "12px 14px", boxShadow: "0 1px 4px rgba(0,0,0,0.06)" }}>
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 8 }}>
           <span style={{ color: "#1a1a2a", fontSize: 17, fontWeight: 800 }}>城市遊記</span>
-          <span style={{ color: "#888", fontSize: 15, fontWeight: 800 }}>¥3,000</span>
-        </div>
-        <div style={{ color: "#888", fontSize: 12, margin: "8px 0 2px", textAlign: "right" }}>
-          以下內容適用於所選日期{" "}
-          <span style={{ color: selectedCityDays.length > 0 ? "#ffd700" : "#888" }}>10:00 - 20:00</span>
         </div>
         <PerkList perks={cityPerks} />
       </div>
@@ -1280,7 +1271,7 @@ function TutorialModal(props) {
           {sections.map(function (sec) {
             return (
               <div key={sec.title} style={{ marginBottom: 18 }}>
-                <div style={{ color: "#ffd700", fontSize: 11, fontWeight: 800, letterSpacing: 1, marginBottom: 8, textTransform: "uppercase" }}>{sec.title}</div>
+                <div style={{ color: "#b8860b", fontSize: 11, fontWeight: 800, letterSpacing: 1, marginBottom: 8, textTransform: "uppercase" }}>{sec.title}</div>
                 {sec.images && <TutCarousel images={sec.images} />}
                 {sec.inline ? (
                   <div style={{ display: "flex", flexWrap: "wrap", gap: 8 }}>
@@ -1391,6 +1382,24 @@ function InstallModal(props) {
   );
 }
 
+function LidCard(props) {
+  var zh = props.zh; var en = props.en; var img = props.img;
+  var fl = useState(false); var flipped = fl[0], setFlipped = fl[1];
+  return (
+    <div onClick={function () { setFlipped(function (v) { return !v; }); }} style={{ perspective: "600px", cursor: "pointer", minHeight: 80 }}>
+      <div style={{ position: "relative", width: "100%", height: "100%", minHeight: 80, transformStyle: "preserve-3d", transform: flipped ? "rotateY(180deg)" : "rotateY(0deg)", transition: "transform 0.45s ease" }}>
+        <div style={{ position: "absolute", inset: 0, backfaceVisibility: "hidden", WebkitBackfaceVisibility: "hidden", background: "#fff", borderRadius: 12, boxShadow: "0 1px 4px rgba(0,0,0,0.06)", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: 4, padding: "14px 8px" }}>
+          <span style={{ color: "#10234a", fontSize: 12, fontWeight: 700, textAlign: "center" }}>{zh}</span>
+          <span style={{ color: "#888", fontSize: 10, textAlign: "center" }}>{en}</span>
+        </div>
+        <div style={{ position: "absolute", inset: 0, backfaceVisibility: "hidden", WebkitBackfaceVisibility: "hidden", transform: "rotateY(180deg)", background: "transparent", borderRadius: 12, boxShadow: "0 1px 4px rgba(0,0,0,0.06)", overflow: "hidden", display: "flex", alignItems: "center", justifyContent: "center" }}>
+          {img ? <img src={img} alt={zh} style={{ width: "100%", height: "100%", objectFit: "contain" }} /> : <span style={{ color: "#444", fontSize: 10 }}>—</span>}
+        </div>
+      </div>
+    </div>
+  );
+}
+
 var tabs = ["團體戰", "限定調查", "捕捉紀錄", "活動資訊"];
 
 export default function App() {
@@ -1408,6 +1417,8 @@ export default function App() {
   var rs_s = useState(normalRaids[0].id); var selectedRaid = rs_s[0], setSelectedRaid = rs_s[1];
   var lt_s = useState(0); var selectedLimitedTab = lt_s[0], setSelectedLimitedTab = lt_s[1];
   var wt_tab_s = useState(0); var selectedWildTab = wt_tab_s[0], setSelectedWildTab = wt_tab_s[1];
+  var cd = useState({}); var cityDays = cd[0], setCityDays = cd[1];
+  var selectedCityDays = allDays.filter(function (d) { return cityDays[d]; });
   var in_s = useState(function () { return !localStorage.getItem("installShown"); });
   var installOpen = in_s[0], setInstallOpen = in_s[1];
 
@@ -1433,7 +1444,7 @@ export default function App() {
     <div style={{ background: "#EEF2F8", minHeight: "100vh", color: "#1a1a2e", fontFamily: "'Chakra Petch','Noto Sans TC',sans-serif", maxWidth: 480, margin: "0 auto", boxSizing: "border-box" }}>
       {installOpen ? <InstallModal onClose={closeInstall} /> : null}
       {saved ? (
-        <div style={{ position: "fixed", top: 20, left: "50%", transform: "translateX(-50%)", background: "rgba(255,215,0,0.15)", border: "1px solid rgba(255,215,0,0.5)", color: "#ffd700", fontSize: 13, fontWeight: 700, padding: "8px 20px", borderRadius: 12, zIndex: 999, fontFamily: "'Share Tech Mono',monospace", letterSpacing: 1 }}>
+        <div style={{ position: "fixed", top: 20, left: "50%", transform: "translateX(-50%)", background: "rgba(255,215,0,0.15)", border: "1px solid rgba(255,215,0,0.5)", color: "#b8860b", fontSize: 13, fontWeight: 700, padding: "8px 20px", borderRadius: 12, zIndex: 999, fontFamily: "'Share Tech Mono',monospace", letterSpacing: 1 }}>
           Image saved!
         </div>
       ) : null}
@@ -1481,7 +1492,8 @@ export default function App() {
           <div style={{ padding: "0 2px", marginBottom: 10, fontSize: 13, lineHeight: 1.5, color: "#444" }}>
             <div style={{ color: "#f95587", fontWeight: 700, marginBottom: 6 }}>極致超級團體戰：超級超夢 X、超級超夢 Y 首度登場！</div>
             <p style={{ marginBottom: 6 }}>公園體驗最後 30 分鐘會出現新道館，讓超過一千名訓練家一同挑戰！</p>
-            <p style={{ marginBottom: 8 }}>捕捉到的超夢：一般招式「反擊」+ 特殊招式「精神擊破」+ 東京背卡 + 超級等級 1 🍀運氣好的話可能是超級等級 2 或 3</p>
+            <p style={{ marginBottom: 4 }}>一般招式「反擊」+ 特殊招式「精神擊破」+ 東京背卡 + 超級等級 1</p>
+            <p style={{ marginBottom: 8 }}>🍀運氣好的話可能是超級等級 2 或 3</p>
             <p style={{ color: "#aaa" }}>⚠️ 超級超夢X、超級超夢Y 超級能量不共用，需分開累積。</p>
           </div>
           <RaidRow raid={normalRaids[4]} onTogChange={function (id, t) { setRaidTogs(function (p) { var n = Object.assign({}, p); n[id] = t; return n; }); }} />
@@ -1532,15 +1544,16 @@ export default function App() {
                 <span style={{ color: "#10234a", fontSize: 15, fontWeight: 700 }}>捷拉奧拉調查</span>
               </div>
               {[
-                { name: "齊力區域", desc: "透過完成團體戰，瞭解更多關於各個小隊的資訊。" },
-                { name: "驚奇區域", desc: "近距離邂逅各種不同種類、樣子與尺寸的寶可夢，已記錄於 Pokémon GO 圖鑑的寶可夢也可能會在這裡出現。" },
-                { name: "探索區域", desc: "透過特別的活動主題田野調查、特殊活動主題蛋以及孵化器效果加成，鑽研寶可夢的奧秘。跟著熱衷於研究寶可夢且樂於分享的人們，與寶可夢成為最佳拍檔。" },
-                { name: "GO 火箭隊的秘密基地", desc: "參與 GO 火箭隊對戰與暗影團體戰，協助布蘭雪和叡智隊奪回「Pokémon GO Fest」的主導權。" },
+                { name: "齊力區域", en: "Recruitment Zone", desc: "透過完成團體戰，瞭解更多關於各個小隊的資訊。", bg: "#FBF4DC", accent: "#e2b94e" },
+                { name: "驚奇區域", en: "Conservatory Zone", desc: "近距離邂逅各種不同種類、樣子與尺寸的寶可夢，已記錄於 Pokémon GO 圖鑑的寶可夢也可能會在這裡出現。", bg: "#EDE5F5", accent: "#634885" },
+                { name: "探索區域", en: "Cultivation Zone", desc: "透過特別的活動主題田野調查、特殊活動主題蛋以及孵化器效果加成，鑽研寶可夢的奧秘。跟著熱衷於研究寶可夢且樂於分享的人們，與寶可夢成為最佳拍檔。", bg: "#FDEEE5", accent: "#e8936d" },
+                { name: "GO 火箭隊的秘密基地", en: "Team GO Rocket's Headquarters", desc: "參與 GO 火箭隊對戰與暗影團體戰，協助布蘭雪和叡智隊奪回「Pokémon GO Fest」的主導權。", bg: "#E8F0FF", accent: "#2255CC" },
               ].map(function (item) {
                 return (
-                  <div key={item.name} style={{ background: "#fff", borderRadius: 12, padding: "14px 16px", boxShadow: "0 1px 4px rgba(0,0,0,0.06)" }}>
-                    <div style={{ color: "#10234a", fontSize: 15, fontWeight: 700, marginBottom: item.desc ? 6 : 0 }}>{item.name}</div>
-                    {item.desc ? <div style={{ color: "#666", fontSize: 12, lineHeight: 1.6 }}>{item.desc}</div> : null}
+                  <div key={item.name} style={{ background: item.bg, borderRadius: 12, padding: "14px 16px", boxShadow: "0 1px 4px rgba(0,0,0,0.06)" }}>
+                    <div style={{ color: item.accent, fontSize: 15, fontWeight: 700, marginBottom: 2 }}>{item.name}</div>
+                    <div style={{ color: item.accent, fontSize: 12, fontWeight: 500, opacity: 0.75, marginBottom: item.desc ? 6 : 0 }}>{item.en}</div>
+                    {item.desc ? <div style={{ color: "#555", fontSize: 12, lineHeight: 1.6 }}>{item.desc}</div> : null}
                   </div>
                 );
               })}
@@ -1548,20 +1561,41 @@ export default function App() {
           ) : null}
           {selectedLimitedTab === 1 ? (
             <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
-              <div style={{ fontSize: 12, color: "#666", fontWeight: 700, paddingLeft: 2 }}>城市遊記</div>
-              <div style={{ fontSize: 12, color: "#666", fontWeight: 700, paddingLeft: 2 }}>Stamp Rally</div>
-              <div style={{ fontSize: 12, color: "#555", lineHeight: 1.7, paddingLeft: 2 }}>Enter Minato City, Koto City, or Shinagawa City to get a stamp sheet that will also show the locations of the PokéStops.</div>
-              <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 8 }}>
-                {[1, 2, 3, 4].map(function (n) {
+              <div style={{ display: "flex", alignItems: "center", gap: 8, paddingLeft: 2 }}>
+                <span style={{ fontSize: 12, color: "#666", fontWeight: 700 }}>集章趣 GO Stamp Rally</span>
+                <span style={{ fontSize: 10, fontWeight: 700, color: "#fff", background: "#F95587", borderRadius: 4, padding: "2px 6px", letterSpacing: 0.5 }}>EXCLUSIVE</span>
+              </div>
+              <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 8 }}>
+                {[
+                  { zh: "港區", en: "Minato City" },
+                  { zh: "江東區", en: "Koto City" },
+                  { zh: "品川區", en: "Shinagawa City" },
+                ].map(function (item) {
                   return (
-                    <div key={n} style={{ background: "#fff", borderRadius: 12, padding: "14px 16px", boxShadow: "0 1px 4px rgba(0,0,0,0.06)", minHeight: 80, display: "flex", alignItems: "center", justifyContent: "center" }}>
-                      <span style={{ color: "#ccc", fontSize: 12 }}>Placeholder {n}</span>
+                    <div key={item.zh} style={{ background: "rgba(249, 85, 135, 0.8)", borderRadius: 12, padding: "14px 16px", boxShadow: "0 1px 4px rgba(0,0,0,0.06)", minHeight: 80, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: 4 }}>
+                      <span style={{ color: "#fff", fontSize: 13, fontWeight: 700, textAlign: "center" }}>{item.zh}</span>
+                      <span style={{ color: "rgba(255,255,255,0.8)", fontSize: 11, textAlign: "center" }}>{item.en}</span>
                     </div>
                   );
                 })}
               </div>
+              <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr 1fr", gap: 8 }}>
+                {[
+                  { zh: "上野公園", en: "Ueno Park",     img: "/lids/ueno-1.png" },
+                  { zh: "上野公園", en: "Ueno Park",     img: "/lids/ueno-2.png" },
+                  { zh: "芹谷公園", en: "Serigaya Park", img: "/lids/serg-1.png" },
+                  { zh: "芹谷公園", en: "Serigaya Park", img: "/lids/serg-2.png" },
+                  { zh: "芹谷公園", en: "Serigaya Park", img: "/lids/serg-3.png" },
+                  { zh: "芹谷公園", en: "Serigaya Park", img: "/lids/serg-4.png" },
+                  { zh: "芹谷公園", en: "Serigaya Park", img: "/lids/serg-5.png" },
+                  { zh: "芹谷公園", en: "Serigaya Park", img: "/lids/serg-6.png" },
+                ].map(function (item, i) {
+                  return <LidCard key={i} zh={item.zh} en={item.en} img={item.img} />;
+                })}
+              </div>
+              <div style={{ fontSize: 12, color: "#666", fontWeight: 700, paddingLeft: 2 }}>城市遊記</div>
               <div style={{ fontSize: 12, color: "#555", lineHeight: 1.7, paddingLeft: 2, marginBottom: 4 }}>
-                <p style={{ marginBottom: 8 }}>在全城市遊戲體驗的第一天獲得四個限時調查，每個限時調查都以四個城市區域中的其中一個為主題。在同一個 GO Fest 舉辦城市參與複數天數活動的訓練家，僅能獲得一份「訓練家挑戰」限時調查（包含加碼限時調查）及獎勵。</p>
+                <p style={{ marginBottom: 8 }}>在<span style={{ display: "inline-block", margin: "0 3px", padding: "1px 7px", borderRadius: 6, background: "#fbcb57", color: "#1a1a1a", fontWeight: 700, fontSize: 12 }}>{selectedCityDays.length > 0 ? selectedCityDays[0] : "全城市遊戲體驗的第一天"}</span>獲得四個限時調查，每個限時調查都以四個城市區域中的其中一個為主題。在同一個 GO Fest 舉辦城市參與複數天數活動的訓練家，僅能獲得一份「訓練家挑戰」限時調查（包含加碼限時調查）及獎勵。</p>
                 <p style={{ marginBottom: 4 }}>・探索至少兩個城市區域、完成限時調查 → 遊戲內的「Pokémon GO 專家獎牌」。</p>
                 <p>・完成至少兩項訓練家挑戰 → 加碼限時調查。調查中可選擇遇見已解鎖第一個超級等級的超級超夢 X 或超級超夢 Y。</p>
               </div>
@@ -1624,7 +1658,7 @@ export default function App() {
           ) : null}
         </div>
       ) : null}
-      {tab === 3 ? <EventInfo /> : null}
+      {tab === 3 ? <EventInfo cityDays={cityDays} setCityDays={setCityDays} /> : null}
 
       </div>{/* end content */}
 
