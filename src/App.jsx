@@ -1102,49 +1102,49 @@ function EventInfo(props) {
         <div style={{ display: "flex", gap: 8, marginTop: 10 }}>
           <div style={{ flex: 1, minWidth: 0 }}>
             <div style={{ fontSize: 15, fontWeight: 800, color: "#1a1a2a", marginBottom: 8, paddingLeft: 2 }}>團戰加值包</div>
-            <PackCard name="團戰加值包" price="" details={raidPackDetails} active={raidPack} onToggle={function () { setRaidPack(function (v) { return !v; }); }} extra={
+            <button onClick={function () { setRaidPack(function (v) { return !v; }); }} style={{ width: "100%", borderRadius: 12, border: "1px solid " + (raidPack ? "#d4a017" : "rgba(0,0,0,0.15)"), overflow: "hidden", marginBottom: 10, padding: 10, background: raidPack ? "#fbcb57" : "rgba(0,0,0,0.06)", cursor: "pointer", WebkitTapHighlightColor: "transparent", touchAction: "manipulation", transition: "all 0.15s" }}>
               <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 6 }}>
-                <div style={{ background: "rgba(0,0,0,0.06)", borderRadius: 8, border: "none", padding: "10px 8px", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: 4 }}>
+                <div style={{ background: "rgba(255,255,255,0.6)", borderRadius: 8, padding: "10px 8px", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: 4 }}>
                   <img src="/icons/ticket.svg" style={{ width: 32, height: 32, objectFit: "contain" }} alt="ticket" />
                   <span style={{ color: "#555", fontSize: 11, textAlign: "center" }}>9 → 18<br />daily</span>
                 </div>
-                <div style={{ background: "rgba(0,0,0,0.06)", borderRadius: 8, border: "none", padding: "10px 8px", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: 4 }}>
+                <div style={{ background: "rgba(255,255,255,0.6)", borderRadius: 8, padding: "10px 8px", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: 4 }}>
                   <span style={{ color: "#888", fontSize: 13, fontWeight: 700, lineHeight: "32px" }}>XP</span>
                   <span style={{ color: "#555", fontSize: 11, textAlign: "center" }}>+5,000<br />per raid</span>
                 </div>
-                <div style={{ background: "rgba(0,0,0,0.06)", borderRadius: 8, border: "none", padding: "10px 8px", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: 4 }}>
+                <div style={{ background: "rgba(255,255,255,0.6)", borderRadius: 8, padding: "10px 8px", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: 4 }}>
                   <img src="/icons/candy.svg" style={{ width: 32, height: 32, objectFit: "contain" }} alt="candy" />
                   <span style={{ color: "#555", fontSize: 11, textAlign: "center" }}>+6<br />per raid</span>
                 </div>
-                <div style={{ background: "rgba(0,0,0,0.06)", borderRadius: 8, border: "none", padding: "10px 8px", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: 4 }}>
+                <div style={{ background: "rgba(255,255,255,0.6)", borderRadius: 8, padding: "10px 8px", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: 4 }}>
                   <img src="/icons/candy.svg" style={{ width: 32, height: 32, objectFit: "contain" }} alt="candy" />
                   <span style={{ color: "#555", fontSize: 11, textAlign: "center" }}>+3 XL<br />per raid</span>
                 </div>
               </div>
-            } />
+            </button>
           </div>
           <div style={{ flex: 1, minWidth: 0 }}>
             <div style={{ fontSize: 15, fontWeight: 800, color: "#1a1a2a", marginBottom: 8, paddingLeft: 2 }}>孵蛋加值包</div>
-            <PackCard name="孵蛋加值包" price="" details={eggPackDetails} active={eggPack} onToggle={function () { setEggPack(function (v) { return !v; }); }} extra={
+            <button onClick={function () { setEggPack(function (v) { return !v; }); }} style={{ width: "100%", borderRadius: 12, border: "1px solid " + (eggPack ? "#d4a017" : "rgba(0,0,0,0.15)"), overflow: "hidden", marginBottom: 10, padding: 10, background: eggPack ? "#fbcb57" : "rgba(0,0,0,0.06)", cursor: "pointer", WebkitTapHighlightColor: "transparent", touchAction: "manipulation", transition: "all 0.15s" }}>
               <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 6 }}>
-                <div style={{ background: "rgba(0,0,0,0.06)", borderRadius: 8, border: "none", padding: "10px 8px", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: 4 }}>
+                <div style={{ background: "rgba(255,255,255,0.6)", borderRadius: 8, padding: "10px 8px", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: 4 }}>
                   <img src="/icons/hatch.svg" style={{ width: 32, height: 32, objectFit: "contain" }} alt="hatch" />
                   <span style={{ color: "#555", fontSize: 11, textAlign: "center" }}>1/2 → 1/4<br />distance</span>
                 </div>
-                <div style={{ background: "rgba(0,0,0,0.06)", borderRadius: 8, border: "none", padding: "10px 8px", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: 4 }}>
+                <div style={{ background: "rgba(255,255,255,0.6)", borderRadius: 8, padding: "10px 8px", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: 4 }}>
                   <span style={{ color: "#888", fontSize: 13, fontWeight: 700, lineHeight: "32px" }}>XP</span>
                   <span style={{ color: "#555", fontSize: 11, textAlign: "center" }}>x1.5 → x3<br />per egg</span>
                 </div>
-                <div style={{ background: "rgba(0,0,0,0.06)", borderRadius: 8, border: "none", padding: "10px 8px", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: 4 }}>
+                <div style={{ background: "rgba(255,255,255,0.6)", borderRadius: 8, padding: "10px 8px", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: 4 }}>
                   <img src="/icons/candy.svg" style={{ width: 32, height: 32, objectFit: "contain" }} alt="candy" />
                   <span style={{ color: "#555", fontSize: 11, textAlign: "center" }}>x1.5 → x3<br />per egg</span>
                 </div>
-                <div style={{ background: "rgba(0,0,0,0.06)", borderRadius: 8, border: "none", padding: "10px 8px", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: 4 }}>
+                <div style={{ background: "rgba(255,255,255,0.6)", borderRadius: 8, padding: "10px 8px", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: 4 }}>
                   <img src="/icons/dust.svg" style={{ width: 32, height: 32, objectFit: "contain" }} alt="dust" />
                   <span style={{ color: "#555", fontSize: 11, textAlign: "center" }}>x1.5 → x3<br />per egg</span>
                 </div>
               </div>
-            } />
+            </button>
           </div>
         </div>
         {hasSelection ? (
