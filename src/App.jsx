@@ -1059,7 +1059,7 @@ function PackCard(props) {
 // ── EventInfo ────────────────────────────────────────────────────────────────
 function EventInfo(props) {
   var cityDays = props.cityDays; var setCityDays = props.setCityDays;
-  var ps = useState(""); var parkSession = ps[0], setParkSession = ps[1];
+  var parkSession = props.parkSession; var setParkSession = props.setParkSession;
   var rp = useState(false); var raidPack = rp[0], setRaidPack = rp[1];
   var ep = useState(false); var eggPack = ep[0], setEggPack = ep[1];
 
@@ -1419,6 +1419,16 @@ export default function App() {
   var wt_tab_s = useState(0); var selectedWildTab = wt_tab_s[0], setSelectedWildTab = wt_tab_s[1];
   var cd = useState({}); var cityDays = cd[0], setCityDays = cd[1];
   var selectedCityDays = allDays.filter(function (d) { return cityDays[d]; });
+  var ps_s = useState(""); var parkSession = ps_s[0], setParkSession = ps_s[1];
+  var parkLastThirty = (function () {
+    if (!parkSession) return null;
+    var m = parkSession.match(/- (\d{2}):(\d{2})/);
+    if (!m) return null;
+    var date = parkSession.split(" ")[0];
+    var h = parseInt(m[1]), mn = parseInt(m[2]) - 30;
+    if (mn < 0) { mn += 60; h -= 1; }
+    return date + " " + h + ":" + (mn < 10 ? "0" : "") + mn + " - " + m[1] + ":" + m[2];
+  })();
   var in_s = useState(function () { return !localStorage.getItem("installShown"); });
   var installOpen = in_s[0], setInstallOpen = in_s[1];
 
@@ -1491,7 +1501,7 @@ export default function App() {
         <div>
           <div style={{ padding: "0 2px", marginBottom: 10, fontSize: 13, lineHeight: 1.5, color: "#444" }}>
             <div style={{ color: "#f95587", fontWeight: 700, marginBottom: 6 }}>極致超級團體戰：超級超夢 X、超級超夢 Y 首度登場！</div>
-            <p style={{ marginBottom: 6 }}>公園體驗最後 30 分鐘會出現新道館，讓超過一千名訓練家一同挑戰！</p>
+            <p style={{ marginBottom: 6 }}><span style={{ display: "inline-block", margin: "0 3px 0 0", padding: "1px 7px", borderRadius: 6, background: "#fbcb57", color: "#1a1a1a", fontWeight: 700, fontSize: 12 }}>{parkLastThirty || "公園體驗最後 30 分鐘"}</span>會出現新道館，讓超過一千名訓練家一同挑戰！</p>
             <p style={{ marginBottom: 4 }}>一般招式「反擊」+ 特殊招式「精神擊破」+ 東京背卡 + 超級等級 1</p>
             <p style={{ marginBottom: 8 }}>🍀運氣好的話可能是超級等級 2 或 3</p>
             <p style={{ color: "#aaa" }}>⚠️ 超級超夢X、超級超夢Y 超級能量不共用，需分開累積。</p>
@@ -1658,7 +1668,7 @@ export default function App() {
           ) : null}
         </div>
       ) : null}
-      {tab === 3 ? <EventInfo cityDays={cityDays} setCityDays={setCityDays} /> : null}
+      {tab === 3 ? <EventInfo cityDays={cityDays} setCityDays={setCityDays} parkSession={parkSession} setParkSession={setParkSession} /> : null}
 
       </div>{/* end content */}
 
