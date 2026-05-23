@@ -792,7 +792,7 @@ function UnownCard(props) {
   var allForms = leftForms.concat(rightForms);
   var tog_s = useState(function () {
     var init = {};
-    allForms.forEach(function (f) { init[f] = { got: false, shiny: false, lucky: false, xxs: false, xxl: false }; });
+    allForms.forEach(function (f) { init[f] = { got: false, shiny: false, iv100: false, lucky: false, xxs: false, xxl: false }; });
     return init;
   });
   var tog = tog_s[0], setTog = tog_s[1];
@@ -808,6 +808,7 @@ function UnownCard(props) {
 
   var caughtCount = allForms.filter(function (f) { return Object.values(tog[f]).some(Boolean); }).length;
   var shinyCount = allForms.filter(function (f) { return tog[f].shiny; }).length;
+  var iv100Count = allForms.filter(function (f) { return tog[f].iv100; }).length;
   var hl = HIGHLIGHT[mon.bg] || { bg: "rgba(255,255,255,0.22)", border: "rgba(255,255,255,0.4)", text: "#fff" };
   var isLight = !!hl.light;
   var textPrimary = hl.cardText || "#fff";
@@ -819,6 +820,7 @@ function UnownCard(props) {
   var btnCfg = [
     { k: "got",   lbl: "☐", activeLbl: "☑", fs: 16, noFilter: true },
     { k: "shiny", lbl: "✨",    fs: 18 },
+    { k: "iv100", lbl: "💯",    fs: 14 },
     { k: "lucky", lbl: "Lucky", fs: 8  },
     { k: "xxs",   lbl: "XXS",   fs: 11 },
     { k: "xxl",   lbl: "XXL",   fs: 11 },
