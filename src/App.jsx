@@ -1496,25 +1496,28 @@ export default function App() {
 
       {tab === 1 ? (
         <div>
-          <div style={{ padding: "0 2px", marginBottom: 10, fontSize: 13, lineHeight: 1.5, color: "#444" }}>
+          <RaidRow raid={normalRaids[4]} onTogChange={function (id, t) { setRaidTogs(function (p) { var n = Object.assign({}, p); n[id] = t; return n; }); }} />
+          <div style={{ padding: "0 2px", marginBottom: 10, marginTop: 10, fontSize: 13, lineHeight: 1.5, color: "#444" }}>
             <div style={{ fontWeight: 700, marginBottom: 6, fontSize: 15, display: "flex", alignItems: "center", gap: 6 }}>
               <span style={{ color: "#f95587" }}>極致超級團體戰：超級超夢 X、超級超夢 Y</span>
               <span style={{ display: "inline-flex", alignItems: "center", background: "#f95587", color: "#fff", fontSize: 11, fontWeight: 800, borderRadius: 4, padding: "1px 6px", letterSpacing: 0.5, flexShrink: 0 }}>DEBUT</span>
             </div>
             <p style={{ marginBottom: 6 }}><span style={{ display: "inline-block", margin: "0 3px 0 0", padding: "1px 7px", borderRadius: 6, background: "#fbcb57", color: "#1a1a1a", fontWeight: 700, fontSize: 12 }}>{parkLastThirty || "公園體驗最後 30 分鐘"}</span>會出現新道館，讓超過一千名訓練家一同挑戰！</p>
           </div>
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 8, marginBottom: 10 }}>
-            <div style={{ background: "#fff", borderRadius: 12, padding: "10px 12px", boxShadow: "0 1px 4px rgba(0,0,0,0.06)", fontSize: 12, color: "#444", lineHeight: 1.6 }}>
-              <div>💪🏻 一般招式「反擊」</div>
-              <div>👊🏻 特殊招式「精神擊破」</div>
-              <div>🌄 東京背卡、🎖️ 超級等級 1</div>
+          <div style={{ background: "rgba(249, 85, 135, 0.5)", borderRadius: 12, padding: "10px 12px", boxShadow: "0 1px 4px rgba(0,0,0,0.06)", fontSize: 12, color: "#fff", lineHeight: 1.6, marginBottom: 10, display: "flex", gap: 0, alignItems: "stretch" }}>
+            <div style={{ flex: 1 }}>
+              <div style={{ fontWeight: 700, marginBottom: 4, opacity: 0.85 }}>保底配置｜超夢 極致超級團體戰</div>
+              <div>👊🏻 招式「反擊」+「精神擊破」</div>
+              <div>🌄 東京背卡 + 已解鎖超級等級 1</div>
+              <div style={{ textAlign: "right" }}>🍀 運氣好：超級等級 2 或 3</div>
             </div>
-            <div style={{ background: "#fff", borderRadius: 12, padding: "10px 12px", boxShadow: "0 1px 4px rgba(0,0,0,0.06)", fontSize: 12, color: "#444", lineHeight: 1.6 }}>
-              <div>🍀 運氣好是超級等級 2 或 3</div>
-              <div>⚠️ X、Y 超級能量不共用</div>
+            <div style={{ width: 1, background: "rgba(255,255,255,0.5)", margin: "0 10px", flexShrink: 0 }} />
+            <div style={{ flex: 1 }}>
+              <div style={{ fontWeight: 700, marginBottom: 4, opacity: 0.85 }}>關於｜超級進化超夢</div>
+              <div>超級超夢 X / Y 能量不共用</div>
+              <div>首次超級進化：7,500 超級能量</div>
             </div>
           </div>
-          <RaidRow raid={normalRaids[4]} onTogChange={function (id, t) { setRaidTogs(function (p) { var n = Object.assign({}, p); n[id] = t; return n; }); }} />
           <div style={{ display: "flex", gap: 0, margin: "14px 0", background: "#fff", borderRadius: 100, padding: "4px" }}>
             {(function () {
               var raids = normalRaids.filter(function (r) { return r.id !== 5; });
