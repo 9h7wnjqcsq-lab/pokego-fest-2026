@@ -1383,14 +1383,15 @@ function InstallModal(props) {
 }
 
 function LidCard(props) {
-  var zh = props.zh; var en = props.en; var img = props.img;
+  var zh = props.zh; var en = props.en; var img = props.img; var bg = props.bg || "#fff";
+  var isColored = bg !== "#fff";
   var fl = useState(false); var flipped = fl[0], setFlipped = fl[1];
   return (
     <div onClick={function () { setFlipped(function (v) { return !v; }); }} style={{ perspective: "600px", cursor: "pointer", minHeight: 80 }}>
       <div style={{ position: "relative", width: "100%", height: "100%", minHeight: 80, transformStyle: "preserve-3d", WebkitTransformStyle: "preserve-3d", transform: flipped ? "rotateY(180deg)" : "rotateY(0deg)", transition: "transform 0.45s ease" }}>
-        <div style={{ position: "absolute", inset: 0, backfaceVisibility: "hidden", WebkitBackfaceVisibility: "hidden", background: "#fff", borderRadius: 12, boxShadow: "0 1px 4px rgba(0,0,0,0.06)", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: 4, padding: "14px 8px" }}>
-          <span style={{ color: "#10234a", fontSize: 12, fontWeight: 700, textAlign: "center" }}>{zh}</span>
-          <span style={{ color: "#888", fontSize: 10, textAlign: "center" }}>{en}</span>
+        <div style={{ position: "absolute", inset: 0, backfaceVisibility: "hidden", WebkitBackfaceVisibility: "hidden", background: bg, borderRadius: 12, boxShadow: "0 1px 4px rgba(0,0,0,0.06)", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: 4, padding: "14px 8px" }}>
+          <span style={{ color: isColored ? "#fff" : "#10234a", fontSize: 12, fontWeight: 700, textAlign: "center" }}>{zh}</span>
+          <span style={{ color: isColored ? "rgba(255,255,255,0.8)" : "#888", fontSize: 10, textAlign: "center" }}>{en}</span>
         </div>
         <div style={{ position: "absolute", inset: 0, backfaceVisibility: "hidden", WebkitBackfaceVisibility: "hidden", transform: "rotateY(180deg)", background: "transparent", borderRadius: 12, boxShadow: "0 1px 4px rgba(0,0,0,0.06)", overflow: "hidden", display: "flex", alignItems: "center", justifyContent: "center" }}>
           {img ? <img src={img} alt={zh} style={{ width: "100%", height: "100%", objectFit: "contain" }} /> : <span style={{ color: "#444", fontSize: 10 }}>—</span>}
@@ -1537,11 +1538,11 @@ export default function App() {
       ) : null}
       {tab === 1 ? (
         <div>
-          <div style={{ display: "flex", gap: 0, marginBottom: 14, background: "#fff", borderRadius: 100, padding: "4px" }}>
-            {["公園遊記", "城市遊記 / 人孔蓋"].map(function (name, i) {
+          <div className="strip-hide-sb" style={{ display: "flex", gap: 0, marginBottom: 14, background: "#fff", borderRadius: 100, padding: "4px", overflowX: "auto", scrollbarWidth: "none", WebkitOverflowScrolling: "touch" }}>
+            {["公園遊記", "城市遊記 / GO Stamp Rally"].map(function (name, i) {
               var active = selectedLimitedTab === i;
               return (
-                <button key={name} onClick={function () { setSelectedLimitedTab(i); }} style={{ flex: 1, padding: "5px 10px", border: "none", borderRadius: 100, fontWeight: 700, fontSize: 12, cursor: "pointer", background: active ? "#fbcb57" : "transparent", color: active ? "#111" : "rgba(0,0,0,0.45)", transition: "background 0.2s, color 0.2s", WebkitTapHighlightColor: "transparent", touchAction: "manipulation", fontFamily: "'Chakra Petch',sans-serif", whiteSpace: "nowrap" }}>
+                <button key={name} onClick={function () { setSelectedLimitedTab(i); }} style={{ flexShrink: 0, flex: 1, padding: "5px 10px", border: "none", borderRadius: 100, fontWeight: 700, fontSize: 12, cursor: "pointer", background: active ? "#fbcb57" : "transparent", color: active ? "#111" : "rgba(0,0,0,0.45)", transition: "background 0.2s, color 0.2s", WebkitTapHighlightColor: "transparent", touchAction: "manipulation", fontFamily: "'Chakra Petch',sans-serif", whiteSpace: "nowrap" }}>
                   {name}
                 </button>
               );
@@ -1549,7 +1550,6 @@ export default function App() {
           </div>
           {selectedLimitedTab === 0 ? (
             <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
-              <div style={{ fontSize: 12, color: "#666", fontWeight: 700, paddingLeft: 2, paddingBottom: 2 }}>公園遊記</div>
               <div style={{ background: "#fff", borderRadius: 12, padding: "14px 16px", boxShadow: "0 1px 4px rgba(0,0,0,0.06)" }}>
                 <span style={{ color: "#10234a", fontSize: 15, fontWeight: 700 }}>捷拉奧拉調查</span>
               </div>
@@ -1571,18 +1571,38 @@ export default function App() {
           ) : null}
           {selectedLimitedTab === 1 ? (
             <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
-              <div style={{ display: "flex", alignItems: "center", gap: 8, paddingLeft: 2 }}>
-                <span style={{ fontSize: 12, color: "#666", fontWeight: 700 }}>集章趣 GO Stamp Rally</span>
-                <span style={{ fontSize: 10, fontWeight: 700, color: "#fff", background: "#F95587", borderRadius: 4, padding: "2px 6px", letterSpacing: 0.5 }}>EXCLUSIVE</span>
+              <div style={{ fontSize: 12, color: "#555", lineHeight: 1.7, paddingLeft: 2, marginBottom: 4 }}>
+                <p style={{ marginBottom: 8 }}>在<span style={{ display: "inline-block", margin: "0 3px", padding: "1px 7px", borderRadius: 6, background: "#fbcb57", color: "#1a1a1a", fontWeight: 700, fontSize: 12 }}>{selectedCityDays.length > 0 ? selectedCityDays[0] : "全城市遊戲體驗的第一天"}</span>獲得四個限時調查。每人一份，無論參加幾天。</p>
+                <p style={{ marginBottom: 4 }}>・Pokémon GO 專家獎牌：探索至少兩個城市區域、完成限時調查</p>
+                <p>・加碼限時調查、遇見已解鎖第一個超級等級的超級超夢 X 或超級超夢 Y → 完成至少兩項訓練家挑戰</p>
+              </div>
+              <img src="/CitywideGameplay.png" alt="Citywide Gameplay" style={{ width: "100%", borderRadius: 12, display: "block" }} />
+              <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 8 }}>
+                {[
+                  { zh: "城市限時調查 1", en: "Collection District",   bg: "#68cdfd" },
+                  { zh: "城市限時調查 2", en: "Friendship District",   bg: "#ffd225" },
+                  { zh: "城市限時調查 3", en: "Investigation District", bg: "#90ce46" },
+                  { zh: "城市限時調查 4", en: "Scouting District",     bg: "#fc5e62" },
+                ].map(function (item) {
+                  return (
+                    <div key={item.zh} style={{ background: item.bg, borderRadius: 12, padding: "14px 16px", boxShadow: "0 1px 4px rgba(0,0,0,0.06)" }}>
+                      <div style={{ color: "#fff", fontSize: 15, fontWeight: 700 }}>{item.en}</div>
+                      <div style={{ color: "rgba(255,255,255,0.75)", fontSize: 11, marginTop: 2 }}>{item.zh}</div>
+                    </div>
+                  );
+                })}
+              </div>
+              <div style={{ background: "#fff", borderRadius: 100, padding: "4px", marginTop: 4 }}>
+                <span style={{ display: "block", padding: "5px 12px", fontSize: 12, fontWeight: 700, color: "rgba(0,0,0,0.45)", fontFamily: "'Chakra Petch',sans-serif", textAlign: "center" }}>集章趣 GO Stamp Rally</span>
               </div>
               <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 8 }}>
                 {[
-                  { zh: "港區", en: "Minato City" },
-                  { zh: "江東區", en: "Koto City" },
-                  { zh: "品川區", en: "Shinagawa City" },
+                  { zh: "港區",  en: "Minato City",    bg: "#fc5e62" },
+                  { zh: "江東區", en: "Koto City",      bg: "#90ce46" },
+                  { zh: "品川區", en: "Shinagawa City", bg: "#68cdfd" },
                 ].map(function (item) {
                   return (
-                    <div key={item.zh} style={{ background: "rgba(249, 85, 135, 0.8)", borderRadius: 12, padding: "14px 16px", boxShadow: "0 1px 4px rgba(0,0,0,0.06)", minHeight: 80, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: 4 }}>
+                    <div key={item.zh} style={{ background: item.bg, borderRadius: 12, padding: "14px 16px", boxShadow: "0 1px 4px rgba(0,0,0,0.06)", minHeight: 80, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: 4 }}>
                       <span style={{ color: "#fff", fontSize: 13, fontWeight: 700, textAlign: "center" }}>{item.zh}</span>
                       <span style={{ color: "rgba(255,255,255,0.8)", fontSize: 11, textAlign: "center" }}>{item.en}</span>
                     </div>
@@ -1591,31 +1611,18 @@ export default function App() {
               </div>
               <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr 1fr", gap: 8 }}>
                 {[
-                  { zh: "上野公園", en: "Ueno Park",     img: "/lids/ueno-1.png" },
-                  { zh: "上野公園", en: "Ueno Park",     img: "/lids/ueno-2.png" },
-                  { zh: "芹谷公園", en: "Serigaya Park", img: "/lids/serg-1.png" },
-                  { zh: "芹谷公園", en: "Serigaya Park", img: "/lids/serg-2.png" },
-                  { zh: "芹谷公園", en: "Serigaya Park", img: "/lids/serg-3.png" },
-                  { zh: "芹谷公園", en: "Serigaya Park", img: "/lids/serg-4.png" },
-                  { zh: "芹谷公園", en: "Serigaya Park", img: "/lids/serg-5.png" },
-                  { zh: "芹谷公園", en: "Serigaya Park", img: "/lids/serg-6.png" },
+                  { zh: "上野公園", en: "Ueno Park",     img: "/lids/ueno-1.png", bg: "#fc5e62" },
+                  { zh: "上野公園", en: "Ueno Park",     img: "/lids/ueno-2.png", bg: "#fc5e62" },
+                  { zh: "芹谷公園", en: "Serigaya Park", img: "/lids/serg-1.png", bg: "#68cdfd" },
+                  { zh: "芹谷公園", en: "Serigaya Park", img: "/lids/serg-2.png", bg: "#68cdfd" },
+                  { zh: "芹谷公園", en: "Serigaya Park", img: "/lids/serg-3.png", bg: "#68cdfd" },
+                  { zh: "芹谷公園", en: "Serigaya Park", img: "/lids/serg-4.png", bg: "#68cdfd" },
+                  { zh: "芹谷公園", en: "Serigaya Park", img: "/lids/serg-5.png", bg: "#68cdfd" },
+                  { zh: "芹谷公園", en: "Serigaya Park", img: "/lids/serg-6.png", bg: "#68cdfd" },
                 ].map(function (item, i) {
-                  return <LidCard key={i} zh={item.zh} en={item.en} img={item.img} />;
+                  return <LidCard key={i} zh={item.zh} en={item.en} img={item.img} bg={item.bg} />;
                 })}
               </div>
-              <div style={{ fontSize: 12, color: "#666", fontWeight: 700, paddingLeft: 2 }}>城市遊記</div>
-              <div style={{ fontSize: 12, color: "#555", lineHeight: 1.7, paddingLeft: 2, marginBottom: 4 }}>
-                <p style={{ marginBottom: 8 }}>在<span style={{ display: "inline-block", margin: "0 3px", padding: "1px 7px", borderRadius: 6, background: "#fbcb57", color: "#1a1a1a", fontWeight: 700, fontSize: 12 }}>{selectedCityDays.length > 0 ? selectedCityDays[0] : "全城市遊戲體驗的第一天"}</span>獲得四個限時調查，每個限時調查都以四個城市區域中的其中一個為主題。在同一個 GO Fest 舉辦城市參與複數天數活動的訓練家，僅能獲得一份「訓練家挑戰」限時調查（包含加碼限時調查）及獎勵。</p>
-                <p style={{ marginBottom: 4 }}>・探索至少兩個城市區域、完成限時調查 → 遊戲內的「Pokémon GO 專家獎牌」。</p>
-                <p>・完成至少兩項訓練家挑戰 → 加碼限時調查。調查中可選擇遇見已解鎖第一個超級等級的超級超夢 X 或超級超夢 Y。</p>
-              </div>
-              {["城市限時調查 1", "城市限時調查 2", "城市限時調查 3", "城市限時調查 4"].map(function (name) {
-                return (
-                  <div key={name} style={{ background: "#fff", borderRadius: 12, padding: "14px 16px", boxShadow: "0 1px 4px rgba(0,0,0,0.06)" }}>
-                    <div style={{ color: "#10234a", fontSize: 15, fontWeight: 700 }}>{name}</div>
-                  </div>
-                );
-              })}
             </div>
           ) : null}
         </div>
