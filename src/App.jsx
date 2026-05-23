@@ -275,28 +275,28 @@ var wildPokemon = [
   {
     id: 107,
     nameCN: "泥驢仔",
-    nameEN: "Hippopotas",
+    nameEN: "Mudbray",
     types: ["GROUND"],
     bg: BG_OTHER,
   },
   {
     id: 108,
     nameCN: "破破舵輪",
-    nameEN: "Sinistea",
+    nameEN: "Dhelmise",
     types: ["GHOST"],
     bg: BG_OTHER,
   },
   {
     id: 109,
     nameCN: "來悲茶",
-    nameEN: "Poltchageist",
+    nameEN: "Sinistea",
     types: ["GRASS", "GHOST"],
     bg: BG_OTHER,
   },
   {
     id: 114,
     nameCN: "黑眼鱷",
-    nameEN: "Totodile",
+    nameEN: "Sandile",
     types: ["WATER"],
     bg: BG_OTHER,
   },
@@ -310,7 +310,7 @@ var wildPokemon = [
   {
     id: 116,
     nameCN: "太古羽蟲",
-    nameEN: "Nincada",
+    nameEN: "Anorith",
     types: ["BUG", "GROUND"],
     bg: BG_OTHER,
   },
@@ -331,7 +331,7 @@ var wildPokemon = [
   {
     id: 117,
     nameCN: "鐵啞鈴",
-    nameEN: "Iron Dumbell",
+    nameEN: "Dumbbell",
     types: ["STEEL", "FLYING"],
     bg: BG_OTHER,
   },
@@ -985,7 +985,7 @@ function GenderName(props) {
 
 function WildCard(props) {
   var mon = props.mon, onTogChange = props.onTogChange, fullWidth = props.fullWidth;
-  var tog_s = useState({ shiny: false, lucky: false, xxs: false, xxl: false });
+  var tog_s = useState({ shiny: false, iv100: false, lucky: false, xxs: false, xxl: false });
   var tog = tog_s[0], setTog = tog_s[1];
 
   function flip(k) {
@@ -1018,7 +1018,7 @@ function WildCard(props) {
           <div style={{ display: "flex", gap: 3, flexWrap: "wrap" }}>{mon.types.map(function (t) { return <TypeBadge key={t} type={t} />; })}</div>
         </div>
         <div style={{ display: "flex", gap: 4, flexShrink: 0 }}>
-          {[["shiny", "✨"], ["lucky", "Lucky"], ["xxs", "XXS"], ["xxl", "XXL"]].map(function (p) { return tagBtn(p[0], p[1], true); })}
+          {[["shiny", "✨"], ["iv100", "💯"], ["lucky", "Lucky"], ["xxs", "XXS"], ["xxl", "XXL"]].map(function (p) { return tagBtn(p[0], p[1], true); })}
         </div>
       </div>
     );
@@ -1422,6 +1422,8 @@ export default function App() {
   var rs_s = useState(normalRaids[0].id); var selectedRaid = rs_s[0], setSelectedRaid = rs_s[1];
   var lt_s = useState(0); var selectedLimitedTab = lt_s[0], setSelectedLimitedTab = lt_s[1];
   var wt_tab_s = useState(0); var selectedWildTab = wt_tab_s[0], setSelectedWildTab = wt_tab_s[1];
+  var op_s = useState(0); var otherPage = op_s[0], setOtherPage = op_s[1];
+  var otherRef = useRef(null);
   var cd = useState({}); var cityDays = cd[0], setCityDays = cd[1];
   var selectedCityDays = allDays.filter(function (d) { return cityDays[d]; });
   var ps_s = useState(""); var parkSession = ps_s[0], setParkSession = ps_s[1];
@@ -1675,10 +1677,25 @@ export default function App() {
             </div>
           ) : null}
           {selectedWildTab === 2 ? (
-            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 8 }}>
-              {wildPokemon.filter(function (m) { return [107, 108, 109, 114, 111, 116, 112, 115, 117, 113].indexOf(m.id) >= 0; }).map(function (m) {
-                return <WildCard key={m.id} mon={m} onTogChange={function (id, t) { setWildTogs(function (p) { var n = Object.assign({}, p); n[id] = t; return n; }); }} />;
-              })}
+            <div>
+              <div ref={otherRef} className="strip-hide-sb" onScroll={function () { if (otherRef.current) { var p = Math.round(otherRef.current.scrollLeft / otherRef.current.offsetWidth); setOtherPage(p); } }} style={{ display: "flex", overflowX: "auto", scrollSnapType: "x mandatory", scrollbarWidth: "none", WebkitOverflowScrolling: "touch", width: "100%", boxSizing: "border-box" }}>
+                {[[107, 108, 109, 114, 111], [116, 112, 115, 117, 113]].map(function (group, gi) {
+                  return (
+                    <div key={gi} style={{ minWidth: "100%", scrollSnapAlign: "start", display: "flex", flexDirection: "column", gap: 8 }}>
+                      {group.map(function (id) {
+                        var m = wildPokemon.find(function (p) { return p.id === id; });
+                        if (!m) return null;
+                        return <WildCard key={m.id} mon={m} fullWidth onTogChange={function (mid, t) { setWildTogs(function (prev) { var n = Object.assign({}, prev); n[mid] = t; return n; }); }} />;
+                      })}
+                    </div>
+                  );
+                })}
+              </div>
+              <div style={{ display: "flex", justifyContent: "center", gap: 6, marginTop: 10 }}>
+                {[0, 1].map(function (i) {
+                  return <div key={i} style={{ width: otherPage === i ? 16 : 6, height: 6, borderRadius: 3, background: "rgba(40,80,160,0.35)", transition: "all 0.2s" }} />;
+                })}
+              </div>
             </div>
           ) : null}
         </div>
