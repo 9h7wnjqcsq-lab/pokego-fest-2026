@@ -889,8 +889,8 @@ function UnownCard(props) {
             <div style={{ display: "flex", gap: 3 }}><TypeBadge type={mon.types[0]} /></div>
           </div>
           <div style={{ display: "flex", flexDirection: "column", alignItems: "flex-end", gap: 3, flexShrink: 0 }}>
-            <span style={{ color: isLight ? "rgba(0,0,0,0.4)" : "#888", fontSize: 12 }}>已捕捉 <span style={{ color: textPrimary, fontWeight: 700 }}>{caughtCount}</span> / {mon.total} 種</span>
-            <span style={{ color: isLight ? "rgba(0,0,0,0.4)" : "#888", fontSize: 12 }}>✨ 已捕捉 <span style={{ color: textPrimary, fontWeight: 700 }}>{shinyCount}</span> / {mon.total} 種</span>
+            <span style={{ display: "inline-flex", alignItems: "center", gap: 3, background: "rgba(100,140,210,0.15)", border: "1px solid rgba(100,140,210,0.3)", borderRadius: 100, padding: "2px 8px", fontSize: 12, color: isLight ? "rgba(0,0,0,0.5)" : "#bbb" }}>已捕捉 <span style={{ color: textPrimary, fontWeight: 700 }}>{caughtCount}</span> / {mon.total} 種</span>
+            <span style={{ display: "inline-flex", alignItems: "center", gap: 3, background: "rgba(255,200,0,0.2)", border: "1px solid rgba(255,200,0,0.35)", borderRadius: 100, padding: "2px 8px", fontSize: 12, color: isLight ? "rgba(0,0,0,0.5)" : "#bbb" }}><span style={{ fontSize: 13, filter: "grayscale(1) brightness(1.5)" }}>✨</span> 已捕捉 <span style={{ color: textPrimary, fontWeight: 700 }}>{shinyCount}</span> / {mon.total} 種</span>
           </div>
         </div>
         <div style={{ display: "flex", gap: 0, margin: "10px 12px 0", background: isLight ? "rgba(0,0,0,0.07)" : "rgba(255,255,255,0.07)", borderRadius: 100, padding: 4 }}>
@@ -975,7 +975,7 @@ function GenderName(props) {
   if (name[0] !== '♂' && name[0] !== '♀') return name;
   return (
     <span>
-      <span style={{ display: "inline-block", verticalAlign: "middle", lineHeight: 1, fontSize: "0.9em" }}>{name[0]}</span>
+      <span style={{ display: "inline-block", verticalAlign: "middle", lineHeight: 1, fontSize: "0.9em", background: "rgba(0,0,0,0.08)", borderRadius: 4, padding: "0 3px" }}>{name[0]}</span>
       {name.slice(1)}
     </span>
   );
@@ -1403,7 +1403,7 @@ function LidCard(props) {
   );
 }
 
-var tabs = ["活動資訊", "團體戰", "限定調查", "捕捉紀錄"];
+var tabs = ["活動資訊", "團戰紀錄", "限定調查", "捕捉紀錄"];
 
 export default function App() {
   var tab_s = useState(0); var tab = tab_s[0], setTab = tab_s[1];
@@ -1638,10 +1638,10 @@ export default function App() {
       {tab === 3 ? (
         <div>
           <div className="strip-hide-sb" style={{ display: "flex", overflowX: "auto", gap: 0, marginBottom: 14, background: "#fff", borderRadius: 100, padding: "4px", WebkitOverflowScrolling: "touch", scrollbarWidth: "none" }}>
-            {["扮裝", "活動焦點", "未知圖騰", "其他"].map(function (name, i) {
+            {["活動焦點", "未知圖騰", "其他"].map(function (name, i) {
               var active = selectedWildTab === i;
               var nextActive = selectedWildTab === i + 1;
-              var showDivider = i < 3 && !active && !nextActive;
+              var showDivider = i < 2 && !active && !nextActive;
               return [
                 <button key={name} onClick={function () { setSelectedWildTab(i); }} style={{ flexShrink: 0, flex: 1, padding: "5px 10px", border: "none", borderRadius: 100, fontWeight: 700, fontSize: 15, cursor: "pointer", background: active ? "#fbcb57" : "transparent", color: active ? "#111" : "rgba(0,0,0,0.45)", transition: "background 0.2s, color 0.2s", WebkitTapHighlightColor: "transparent", touchAction: "manipulation", fontFamily: "'Chakra Petch',sans-serif", whiteSpace: "nowrap" }}>
                   {name}
@@ -1651,30 +1651,25 @@ export default function App() {
             })}
           </div>
           {selectedWildTab === 0 ? (
-            <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
-              {wildPokemon.filter(function (m) { return [101, 102, 118, 119].indexOf(m.id) >= 0; }).map(function (m) {
-                return <WildCard key={m.id} mon={m} fullWidth onTogChange={function (id, t) { setWildTogs(function (p) { var n = Object.assign({}, p); n[id] = t; return n; }); }} />;
-              })}
-            </div>
-          ) : null}
-          {selectedWildTab === 1 ? (
             <div>
               <div style={{ fontSize: 12, color: "#666", marginBottom: 10, paddingLeft: 2 }}>包含遊戲中初登場、地區限定野外出沒</div>
               <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
-                {wildPokemon.filter(function (m) { return [106, 103, 110, 104].indexOf(m.id) >= 0; }).map(function (m) {
-                  return <WildCard key={m.id} mon={m} fullWidth onTogChange={function (id, t) { setWildTogs(function (p) { var n = Object.assign({}, p); n[id] = t; return n; }); }} />;
+                {[101, 119, 102, 118, 106, 104, 103, 110].map(function (id) {
+                  var m = wildPokemon.find(function (p) { return p.id === id; });
+                  if (!m) return null;
+                  return <WildCard key={m.id} mon={m} fullWidth onTogChange={function (mid, t) { setWildTogs(function (p) { var n = Object.assign({}, p); n[mid] = t; return n; }); }} />;
                 })}
               </div>
             </div>
           ) : null}
-          {selectedWildTab === 2 ? (
+          {selectedWildTab === 1 ? (
             <div>
               {wildPokemon.filter(function (m) { return m.special; }).map(function (m) {
                 return <UnownCard key={m.id} mon={m} inline onUnownChange={setUnownTog} />;
               })}
             </div>
           ) : null}
-          {selectedWildTab === 3 ? (
+          {selectedWildTab === 2 ? (
             <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 8 }}>
               {wildPokemon.filter(function (m) { return [107, 108, 109, 114, 111, 116, 112, 115, 117, 113].indexOf(m.id) >= 0; }).map(function (m) {
                 return <WildCard key={m.id} mon={m} onTogChange={function (id, t) { setWildTogs(function (p) { var n = Object.assign({}, p); n[id] = t; return n; }); }} />;
