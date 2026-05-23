@@ -1435,7 +1435,7 @@ export default function App() {
   var in_s = useState(function () { return !localStorage.getItem("installShown"); });
   var installOpen = in_s[0], setInstallOpen = in_s[1];
 
-  function closeInstall() { localStorage.setItem("installShown", "1"); setInstallOpen(false); }
+  function closeInstall() { localStorage.setItem("installShown", "1"); setInstallOpen(false); setTutOpen(true); }
 
   function exportCard() {
     drawCard(raidTogs, wildTogs, unownTog, function (canvas) {
@@ -1497,14 +1497,22 @@ export default function App() {
       {tab === 1 ? (
         <div>
           <div style={{ padding: "0 2px", marginBottom: 10, fontSize: 13, lineHeight: 1.5, color: "#444" }}>
-            <div style={{ fontWeight: 700, marginBottom: 6, fontSize: 15 }}>
-  <span style={{ color: "#f95587" }}>極致超級團體戰：超級超夢 X、超級超夢 Y </span>
-  <span style={{ display: "inline-block", background: "#f95587", color: "#fff", fontSize: 11, fontWeight: 800, borderRadius: 4, padding: "1px 6px", verticalAlign: "middle", letterSpacing: 0.5 }}>DEBUT</span>
-</div>
+            <div style={{ fontWeight: 700, marginBottom: 6, fontSize: 15, display: "flex", alignItems: "center", gap: 6 }}>
+              <span style={{ color: "#f95587" }}>極致超級團體戰：超級超夢 X、超級超夢 Y</span>
+              <span style={{ display: "inline-flex", alignItems: "center", background: "#f95587", color: "#fff", fontSize: 11, fontWeight: 800, borderRadius: 4, padding: "1px 6px", letterSpacing: 0.5, flexShrink: 0 }}>DEBUT</span>
+            </div>
             <p style={{ marginBottom: 6 }}><span style={{ display: "inline-block", margin: "0 3px 0 0", padding: "1px 7px", borderRadius: 6, background: "#fbcb57", color: "#1a1a1a", fontWeight: 700, fontSize: 12 }}>{parkLastThirty || "公園體驗最後 30 分鐘"}</span>會出現新道館，讓超過一千名訓練家一同挑戰！</p>
-            <p style={{ marginBottom: 4 }}>一般招式「反擊」+ 特殊招式「精神擊破」+ 東京背卡 + 超級等級 1</p>
-            <p style={{ marginBottom: 8 }}>🍀運氣好的話可能是超級等級 2 或 3</p>
-            <p style={{ color: "#aaa" }}>⚠️ 超級超夢X、超級超夢Y 超級能量不共用，需分開累積。</p>
+          </div>
+          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 8, marginBottom: 10 }}>
+            <div style={{ background: "#fff", borderRadius: 12, padding: "10px 12px", boxShadow: "0 1px 4px rgba(0,0,0,0.06)", fontSize: 12, color: "#444", lineHeight: 1.6 }}>
+              <div>💪🏻 一般招式「反擊」</div>
+              <div>👊🏻 特殊招式「精神擊破」</div>
+              <div>🌄 東京背卡、🎖️ 超級等級 1</div>
+            </div>
+            <div style={{ background: "#fff", borderRadius: 12, padding: "10px 12px", boxShadow: "0 1px 4px rgba(0,0,0,0.06)", fontSize: 12, color: "#444", lineHeight: 1.6 }}>
+              <div>🍀 運氣好是超級等級 2 或 3</div>
+              <div>⚠️ X、Y 超級能量不共用</div>
+            </div>
           </div>
           <RaidRow raid={normalRaids[4]} onTogChange={function (id, t) { setRaidTogs(function (p) { var n = Object.assign({}, p); n[id] = t; return n; }); }} />
           <div style={{ display: "flex", gap: 0, margin: "14px 0", background: "#fff", borderRadius: 100, padding: "4px" }}>
@@ -1538,7 +1546,7 @@ export default function App() {
       {tab === 2 ? (
         <div>
           <div className="strip-hide-sb" style={{ display: "flex", gap: 0, marginBottom: 14, background: "#fff", borderRadius: 100, padding: "4px", overflowX: "auto", scrollbarWidth: "none", WebkitOverflowScrolling: "touch" }}>
-            {["公園遊記", "城市遊記 / GO Stamp Rally"].map(function (name, i) {
+            {["城市遊記 / GO Stamp Rally", "公園遊記"].map(function (name, i) {
               var active = selectedLimitedTab === i;
               return (
                 <button key={name} onClick={function () { setSelectedLimitedTab(i); }} style={{ flexShrink: 0, flex: 1, padding: "5px 10px", border: "none", borderRadius: 100, fontWeight: 700, fontSize: 15, cursor: "pointer", background: active ? "#fbcb57" : "transparent", color: active ? "#111" : "rgba(0,0,0,0.45)", transition: "background 0.2s, color 0.2s", WebkitTapHighlightColor: "transparent", touchAction: "manipulation", fontFamily: "'Chakra Petch',sans-serif", whiteSpace: "nowrap" }}>
@@ -1547,8 +1555,9 @@ export default function App() {
               );
             })}
           </div>
-          {selectedLimitedTab === 0 ? (
+          {selectedLimitedTab === 1 ? (
             <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
+              <img src="/ParkGameplay.jpg" alt="Park Gameplay" style={{ width: "100%", borderRadius: 12, display: "block" }} />
               <div style={{ background: "#fff", borderRadius: 12, padding: "14px 16px", boxShadow: "0 1px 4px rgba(0,0,0,0.06)" }}>
                 <span style={{ color: "#10234a", fontSize: 15, fontWeight: 700 }}>捷拉奧拉調查</span>
               </div>
@@ -1568,7 +1577,7 @@ export default function App() {
               })}
             </div>
           ) : null}
-          {selectedLimitedTab === 1 ? (
+          {selectedLimitedTab === 0 ? (
             <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
               <div style={{ fontSize: 12, color: "#555", lineHeight: 1.7, paddingLeft: 2, marginBottom: 4 }}>
                 <p style={{ marginBottom: 8 }}>在<span style={{ display: "inline-block", margin: "0 3px", padding: "1px 7px", borderRadius: 6, background: "#fbcb57", color: "#1a1a1a", fontWeight: 700, fontSize: 12 }}>{selectedCityDays.length > 0 ? selectedCityDays[0] : "全城市遊戲體驗的第一天"}</span>獲得四個限時調查。每人一份，無論參加幾天。</p>
