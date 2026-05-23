@@ -1583,9 +1583,9 @@ export default function App() {
           {selectedLimitedTab === 0 ? (
             <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
               <div style={{ fontSize: 12, color: "#555", lineHeight: 1.7, paddingLeft: 2, marginBottom: 4 }}>
-                <p style={{ marginBottom: 8 }}>在<span style={{ display: "inline-block", margin: "0 3px", padding: "1px 7px", borderRadius: 6, background: "#fbcb57", color: "#1a1a1a", fontWeight: 700, fontSize: 12 }}>{selectedCityDays.length > 0 ? selectedCityDays[0] : "全城市遊戲體驗的第一天"}</span>獲得四個限時調查。每人一份，無論參加幾天。</p>
-                <p style={{ marginBottom: 4 }}>・Pokémon GO 專家獎牌：探索至少兩個城市區域、完成限時調查</p>
-                <p>・加碼限時調查、遇見已解鎖第一個超級等級的超級超夢 X 或超級超夢 Y → 完成至少兩項訓練家挑戰</p>
+                <p style={{ marginBottom: 8 }}>在<span style={{ display: "inline-block", margin: "0 3px", padding: "1px 7px", borderRadius: 6, background: "#fbcb57", color: "#1a1a1a", fontWeight: 700, fontSize: 12 }}>{selectedCityDays.length > 0 ? selectedCityDays[0] : "全城市遊戲體驗的第一天"}</span>獲得四個限時調查 | 每人一份，無論參加幾天</p>
+                <p style={{ marginBottom: 4 }}>探索兩個城市區域、完成限時調查 <span style={{ display: "inline-block", background: "#fff", borderRadius: 6, padding: "1px 7px", color: "#1a1a1a", fontWeight: 600 }}>🎁 Pokémon GO 專家獎牌</span></p>
+                <p>完成兩項訓練家挑戰 <span style={{ display: "inline-block", background: "#fff", borderRadius: 6, padding: "1px 7px", color: "#1a1a1a", fontWeight: 600 }}>🎁 限時調查、遇見超級等級 1 的超級超夢 X 或 Y</span></p>
               </div>
               <img src="/CitywideGameplay.png" alt="Citywide Gameplay" style={{ width: "100%", borderRadius: 12, display: "block" }} />
               <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 8 }}>
