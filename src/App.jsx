@@ -1516,7 +1516,7 @@ export default function App() {
                 var showDivider = i < raids.length - 1 && !active && !nextActive;
                 var label = r.nameCN.replace(/\n/g, " ").replace("原始蓋歐卡", "蓋歐卡").replace("原始固拉多", "固拉多").replace("帕底亞 肯泰羅(水瀾)", "肯泰羅");
                 return [
-                  <button key={r.id} onClick={function () { setSelectedRaid(r.id); }} style={{ flex: 1, padding: "7px 4px", border: "none", borderRadius: 100, background: active ? "#fbcb57" : "transparent", color: active ? "#10234a" : "rgba(0,0,0,0.45)", fontSize: 12, fontWeight: 700, cursor: "pointer", fontFamily: "'Chakra Petch',sans-serif", transition: "background 0.2s, color 0.2s", WebkitTapHighlightColor: "transparent", touchAction: "manipulation", whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>
+                  <button key={r.id} onClick={function () { setSelectedRaid(r.id); }} style={{ flex: 1, padding: "7px 4px", border: "none", borderRadius: 100, background: active ? "#fbcb57" : "transparent", color: active ? "#10234a" : "rgba(0,0,0,0.45)", fontSize: 15, fontWeight: 700, cursor: "pointer", fontFamily: "'Chakra Petch',sans-serif", transition: "background 0.2s, color 0.2s", WebkitTapHighlightColor: "transparent", touchAction: "manipulation", whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>
                     {label}
                   </button>,
                   showDivider ? <div key={"d-" + i} style={{ width: 1, height: 7, background: "rgba(0,0,0,0.22)", alignSelf: "center", flexShrink: 0 }} /> : null
@@ -1541,7 +1541,7 @@ export default function App() {
             {["公園遊記", "城市遊記 / GO Stamp Rally"].map(function (name, i) {
               var active = selectedLimitedTab === i;
               return (
-                <button key={name} onClick={function () { setSelectedLimitedTab(i); }} style={{ flexShrink: 0, flex: 1, padding: "5px 10px", border: "none", borderRadius: 100, fontWeight: 700, fontSize: 12, cursor: "pointer", background: active ? "#fbcb57" : "transparent", color: active ? "#111" : "rgba(0,0,0,0.45)", transition: "background 0.2s, color 0.2s", WebkitTapHighlightColor: "transparent", touchAction: "manipulation", fontFamily: "'Chakra Petch',sans-serif", whiteSpace: "nowrap" }}>
+                <button key={name} onClick={function () { setSelectedLimitedTab(i); }} style={{ flexShrink: 0, flex: 1, padding: "5px 10px", border: "none", borderRadius: 100, fontWeight: 700, fontSize: 15, cursor: "pointer", background: active ? "#fbcb57" : "transparent", color: active ? "#111" : "rgba(0,0,0,0.45)", transition: "background 0.2s, color 0.2s", WebkitTapHighlightColor: "transparent", touchAction: "manipulation", fontFamily: "'Chakra Petch',sans-serif", whiteSpace: "nowrap" }}>
                   {name}
                 </button>
               );
@@ -1592,7 +1592,7 @@ export default function App() {
                 })}
               </div>
               <div style={{ background: "#fff", borderRadius: 100, padding: "4px", marginTop: 4 }}>
-                <span style={{ display: "block", padding: "5px 12px", fontSize: 12, fontWeight: 700, color: "rgba(0,0,0,0.45)", fontFamily: "'Chakra Petch',sans-serif", textAlign: "center" }}>集章趣 GO Stamp Rally</span>
+                <span style={{ display: "block", padding: "5px 12px", fontSize: 15, fontWeight: 700, color: "rgba(0,0,0,0.45)", fontFamily: "'Chakra Petch',sans-serif", textAlign: "center" }}>集章趣 GO Stamp Rally</span>
               </div>
               <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 8 }}>
                 {[
@@ -1634,7 +1634,7 @@ export default function App() {
               var nextActive = selectedWildTab === i + 1;
               var showDivider = i < 3 && !active && !nextActive;
               return [
-                <button key={name} onClick={function () { setSelectedWildTab(i); }} style={{ flexShrink: 0, flex: 1, padding: "5px 10px", border: "none", borderRadius: 100, fontWeight: 700, fontSize: 12, cursor: "pointer", background: active ? "#fbcb57" : "transparent", color: active ? "#111" : "rgba(0,0,0,0.45)", transition: "background 0.2s, color 0.2s", WebkitTapHighlightColor: "transparent", touchAction: "manipulation", fontFamily: "'Chakra Petch',sans-serif", whiteSpace: "nowrap" }}>
+                <button key={name} onClick={function () { setSelectedWildTab(i); }} style={{ flexShrink: 0, flex: 1, padding: "5px 10px", border: "none", borderRadius: 100, fontWeight: 700, fontSize: 15, cursor: "pointer", background: active ? "#fbcb57" : "transparent", color: active ? "#111" : "rgba(0,0,0,0.45)", transition: "background 0.2s, color 0.2s", WebkitTapHighlightColor: "transparent", touchAction: "manipulation", fontFamily: "'Chakra Petch',sans-serif", whiteSpace: "nowrap" }}>
                   {name}
                 </button>,
                 showDivider ? <div key={"d-" + i} style={{ width: 1, height: 7, background: "rgba(0,0,0,0.22)", alignSelf: "center", flexShrink: 0 }} /> : null
