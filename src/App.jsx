@@ -222,7 +222,7 @@ var wildPokemon = [
   },
   {
     id: 102,
-    nameCN: "♂ 皮卡丘（叡智帽）",
+    nameCN: "🚹 皮卡丘（叡智帽）",
     nameEN: "Pikachu (Wisecracker) M",
     types: ["ELECTRIC"],
     bg: BG_COSTUME,
@@ -236,7 +236,7 @@ var wildPokemon = [
   },
   {
     id: 118,
-    nameCN: "♀ 皮卡丘（叡智帽）",
+    nameCN: "🚺 皮卡丘（叡智帽）",
     nameEN: "Pikachu (Wisecracker) F",
     types: ["ELECTRIC"],
     bg: BG_COSTUME,
