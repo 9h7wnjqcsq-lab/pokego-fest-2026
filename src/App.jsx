@@ -1225,6 +1225,14 @@ function TutorialModal(props) {
   var onClose = props.onClose;
   var sections = [
     {
+      title: "基本設定",
+      images: [
+        { src: "/setting-1.png", desc: "選擇你參加的場次與加值包，以獲得最佳使用體驗。" },
+        { src: "/setting-2.png", desc: "選擇後，其他頁面相關資訊也會自動顯示為你專屬的版本。" },
+      ],
+      items: [],
+    },
+    {
       title: "團體戰計數器",
       images: [
         { src: "/tut-1.png", desc: "每個團體戰寶可夢的卡片都可以展開" },
@@ -1233,22 +1241,16 @@ function TutorialModal(props) {
         { src: "/tut-4.png", desc: "當捕捉總數不為 0，異色比例會自動計算，並同步顯示在卡片收合狀態欄位。" },
       ],
       items: [],
-      extra: { rows: [
-        [
-          { icon: "📊", text: "捕捉總數" },
-          { icon: "✨", text: "異色" },
-          { icon: "💯", text: "完美" },
-          { icon: "🌄", text: "背卡" },
-        ],
-        [
-          { icon: "LUCKY", text: "亮晶晶寶可夢", small: true },
-        ],
-      ]},
     },
     {
-      title: "匯出 Infographic",
+      title: "捕捉標識",
+      inline: true,
       items: [
-        { icon: "↑", text: "（建置中）右上角黃色按鈕，將成果儲存為圖片收藏", small: true },
+        { icon: "📊", text: "捕捉總數" },
+        { icon: "✨", text: "異色" },
+        { icon: "💯", text: "完美" },
+        { icon: "🌄", text: "背卡" },
+        { icon: "LUCKY", text: "亮晶晶", small: true },
       ],
     },
   ];
@@ -1401,7 +1403,7 @@ function LidCard(props) {
   );
 }
 
-var tabs = ["團體戰", "限定調查", "捕捉紀錄", "活動資訊"];
+var tabs = ["活動資訊", "團體戰", "限定調查", "捕捉紀錄"];
 
 export default function App() {
   var tab_s = useState(0); var tab = tab_s[0], setTab = tab_s[1];
@@ -1471,12 +1473,6 @@ export default function App() {
           </div>
           <div style={{ display: "flex", gap: 8, alignItems: "center", flexShrink: 0 }}>
             <button onClick={function () { setTutOpen(true); }} aria-label="使用說明" style={{ width: 44, height: 44, borderRadius: 12, background: "rgba(255,255,255,0.08)", border: "none", color: "#7ecfff", fontSize: 18, fontWeight: 900, cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center", WebkitTapHighlightColor: "transparent", touchAction: "manipulation", transition: "all 0.15s", flexShrink: 0 }}>?</button>
-            <button onClick={exportCard} aria-label="匯出 Infographic" style={{ width: 44, height: 44, borderRadius: 12, border: "none", background: "rgba(255,215,0,0.1)", cursor: "pointer", WebkitTapHighlightColor: "transparent", touchAction: "manipulation", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0, padding: 0 }}>
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M12 16 L12 4 M8 8 L12 4 L16 8" stroke="#ffd700" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"/>
-                <path d="M8 12 L4 12 L4 22 L20 22 L20 12 L16 12" stroke="#ffd700" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"/>
-              </svg>
-            </button>
           </div>
         </div>
       </div>{/* end sticky header */}
@@ -1498,10 +1494,13 @@ export default function App() {
         })}
       </div>
 
-      {tab === 0 ? (
+      {tab === 1 ? (
         <div>
           <div style={{ padding: "0 2px", marginBottom: 10, fontSize: 13, lineHeight: 1.5, color: "#444" }}>
-            <div style={{ color: "#f95587", fontWeight: 700, marginBottom: 6 }}>極致超級團體戰：超級超夢 X、超級超夢 Y 首度登場！</div>
+            <div style={{ fontWeight: 700, marginBottom: 6, fontSize: 15 }}>
+  <span style={{ color: "#f95587" }}>極致超級團體戰：超級超夢 X、超級超夢 Y </span>
+  <span style={{ display: "inline-block", background: "#f95587", color: "#fff", fontSize: 11, fontWeight: 800, borderRadius: 4, padding: "1px 6px", verticalAlign: "middle", letterSpacing: 0.5 }}>DEBUT</span>
+</div>
             <p style={{ marginBottom: 6 }}><span style={{ display: "inline-block", margin: "0 3px 0 0", padding: "1px 7px", borderRadius: 6, background: "#fbcb57", color: "#1a1a1a", fontWeight: 700, fontSize: 12 }}>{parkLastThirty || "公園體驗最後 30 分鐘"}</span>會出現新道館，讓超過一千名訓練家一同挑戰！</p>
             <p style={{ marginBottom: 4 }}>一般招式「反擊」+ 特殊招式「精神擊破」+ 東京背卡 + 超級等級 1</p>
             <p style={{ marginBottom: 8 }}>🍀運氣好的話可能是超級等級 2 或 3</p>
@@ -1536,7 +1535,7 @@ export default function App() {
           })}
         </div>
       ) : null}
-      {tab === 1 ? (
+      {tab === 2 ? (
         <div>
           <div className="strip-hide-sb" style={{ display: "flex", gap: 0, marginBottom: 14, background: "#fff", borderRadius: 100, padding: "4px", overflowX: "auto", scrollbarWidth: "none", WebkitOverflowScrolling: "touch" }}>
             {["公園遊記", "城市遊記 / GO Stamp Rally"].map(function (name, i) {
@@ -1627,7 +1626,7 @@ export default function App() {
           ) : null}
         </div>
       ) : null}
-      {tab === 2 ? (
+      {tab === 3 ? (
         <div>
           <div className="strip-hide-sb" style={{ display: "flex", overflowX: "auto", gap: 0, marginBottom: 14, background: "#fff", borderRadius: 100, padding: "4px", WebkitOverflowScrolling: "touch", scrollbarWidth: "none" }}>
             {["扮裝", "活動焦點", "未知圖騰", "其他"].map(function (name, i) {
@@ -1675,7 +1674,7 @@ export default function App() {
           ) : null}
         </div>
       ) : null}
-      {tab === 3 ? <EventInfo cityDays={cityDays} setCityDays={setCityDays} parkSession={parkSession} setParkSession={setParkSession} /> : null}
+      {tab === 0 ? <EventInfo cityDays={cityDays} setCityDays={setCityDays} parkSession={parkSession} setParkSession={setParkSession} /> : null}
 
       </div>{/* end content */}
 
