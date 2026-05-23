@@ -1387,7 +1387,7 @@ function LidCard(props) {
   var fl = useState(false); var flipped = fl[0], setFlipped = fl[1];
   return (
     <div onClick={function () { setFlipped(function (v) { return !v; }); }} style={{ perspective: "600px", cursor: "pointer", minHeight: 80 }}>
-      <div style={{ position: "relative", width: "100%", height: "100%", minHeight: 80, transformStyle: "preserve-3d", transform: flipped ? "rotateY(180deg)" : "rotateY(0deg)", transition: "transform 0.45s ease" }}>
+      <div style={{ position: "relative", width: "100%", height: "100%", minHeight: 80, transformStyle: "preserve-3d", WebkitTransformStyle: "preserve-3d", transform: flipped ? "rotateY(180deg)" : "rotateY(0deg)", transition: "transform 0.45s ease" }}>
         <div style={{ position: "absolute", inset: 0, backfaceVisibility: "hidden", WebkitBackfaceVisibility: "hidden", background: "#fff", borderRadius: 12, boxShadow: "0 1px 4px rgba(0,0,0,0.06)", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: 4, padding: "14px 8px" }}>
           <span style={{ color: "#10234a", fontSize: 12, fontWeight: 700, textAlign: "center" }}>{zh}</span>
           <span style={{ color: "#888", fontSize: 10, textAlign: "center" }}>{en}</span>
