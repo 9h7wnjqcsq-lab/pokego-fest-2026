@@ -735,7 +735,7 @@ function RaidRow(props) {
           <div style={{ display: "flex", gap: 5 }}>
             <LabelBtn active={tog.xxs} onClick={function () { flip("xxs"); }} label="XXS" />
             <LabelBtn active={tog.xxl} onClick={function () { flip("xxl"); }} label="XXL" />
-            <LabelBtn active={tog.lucky} onClick={function () { flip("lucky"); }} label="LUCKY" />
+            {!raid.shadow ? <LabelBtn active={tog.lucky} onClick={function () { flip("lucky"); }} label="LUCKY" /> : <div style={{ width: 44 }} />}
           </div>
         </div>
       </div>
