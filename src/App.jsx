@@ -1594,10 +1594,10 @@ export default function App() {
               <img src="/CitywideGameplay.png" alt="Citywide Gameplay" style={{ width: "100%", borderRadius: 12, display: "block" }} />
               <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 8 }}>
                 {[
-                  { zh: "城市限時調查 1", en: "Collection District",   bg: "#68cdfd" },
+                  { zh: "城市限時調查 1", en: "收藏地帶",   bg: "#68cdfd" },
                   { zh: "城市限時調查 2", en: "Friendship District",   bg: "#ffd225" },
-                  { zh: "城市限時調查 3", en: "Investigation District", bg: "#90ce46" },
-                  { zh: "城市限時調查 4", en: "Scouting District",     bg: "#fc5e62" },
+                  { zh: "城市限時調查 3", en: "實地調查地帶", bg: "#90ce46" },
+                  { zh: "城市限時調查 4", en: "冒險地帶",     bg: "#fc5e62" },
                 ].map(function (item) {
                   return (
                     <div key={item.zh} style={{ background: item.bg, borderRadius: 12, padding: "14px 16px", boxShadow: "0 1px 4px rgba(0,0,0,0.06)" }}>
