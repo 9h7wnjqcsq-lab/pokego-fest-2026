@@ -1645,7 +1645,7 @@ export default function App() {
               <div style={{ background: "#fff", borderRadius: 100, padding: "4px", marginTop: 4 }}>
                 <span style={{ display: "block", padding: "5px 12px", fontSize: 15, fontWeight: 700, color: "rgba(0,0,0,0.45)", fontFamily: "'Chakra Petch',sans-serif", textAlign: "center" }}>集章趣 GO Stamp Rally</span>
               </div>
-              <div style={{ fontSize: 12, color: "#555", lineHeight: 1.7, textAlign: "center", padding: "2px 4px" }}>僅有「上野公園」、「芹谷公園」包含實體人孔蓋在內所有體驗，其餘 13 個新增據點僅能進行遊戲內集章、捕捉皮卡丘。</div>
+              <div style={{ fontSize: 12, color: "#555", lineHeight: 1.7, textAlign: "center", padding: "2px 4px" }}>僅有「上野公園」、「芹谷公園」包含實體人孔蓋在內所有體驗，其餘 13 個新增據點僅能進行遊戲內集章、捕捉背卡皮卡丘。</div>
               <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 8 }}>
                 {[
                   { zh: "港區",  en: "Minato City",    bg: "#fc5e62" },
