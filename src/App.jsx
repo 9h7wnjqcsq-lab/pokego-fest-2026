@@ -1397,7 +1397,7 @@ function LidCard(props) {
           <span style={{ color: isColored ? "#fff" : "#10234a", fontSize: 12, fontWeight: 700, textAlign: "center" }}>{zh}</span>
           <span style={{ color: isColored ? "rgba(255,255,255,0.8)" : "#888", fontSize: 10, textAlign: "center" }}>{en}</span>
         </div>
-        <div style={{ position: "absolute", inset: 0, backfaceVisibility: "hidden", WebkitBackfaceVisibility: "hidden", transform: "rotateY(180deg)", background: "transparent", borderRadius: 12, boxShadow: "0 1px 4px rgba(0,0,0,0.06)", overflow: "hidden", display: "flex", alignItems: "center", justifyContent: "center" }}>
+        <div style={{ position: "absolute", inset: 0, backfaceVisibility: "hidden", WebkitBackfaceVisibility: "hidden", transform: "rotateY(180deg)", background: bg, borderRadius: 12, boxShadow: "0 1px 4px rgba(0,0,0,0.06)", overflow: "hidden", display: "flex", alignItems: "center", justifyContent: "center" }}>
           {img ? <img src={img} alt={zh} style={{ width: "100%", height: "100%", objectFit: "contain" }} /> : <span style={{ color: "#444", fontSize: 10 }}>—</span>}
         </div>
       </div>
@@ -1592,17 +1592,52 @@ export default function App() {
                 <p>完成兩項訓練家挑戰 <span style={{ display: "inline-block", background: "#fff", borderRadius: 6, padding: "1px 7px", color: "#1a1a1a", fontWeight: 600 }}>🎁 限時調查、遇見超級等級 1 的超級超夢 X 或 Y</span></p>
               </div>
               <img src="/CitywideGameplay.png" alt="Citywide Gameplay" style={{ width: "100%", borderRadius: 12, display: "block" }} />
+              <div style={{ background: "#fff", borderRadius: 100, padding: "4px" }}>
+                <span style={{ display: "block", padding: "5px 12px", fontSize: 13, fontWeight: 700, color: "#333", fontFamily: "'Chakra Petch',sans-serif", textAlign: "center" }}>🏅 寶可夢中心　🐾 人孔蓋集章趣　👊🏻 團體戰熱點</span>
+              </div>
               <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 8 }}>
                 {[
-                  { zh: "城市限時調查 1", en: "收藏地帶",   bg: "#68cdfd" },
-                  { zh: "城市限時調查 2", en: "友好地帶",   bg: "#ffd225" },
-                  { zh: "城市限時調查 3", en: "實地調查地帶", bg: "#90ce46" },
-                  { zh: "城市限時調查 4", en: "冒險地帶",     bg: "#fc5e62" },
+                  { zh: "城市限時調查 🐾 🔟", en: "收藏", bg: "#68cdfd", locs: [
+                    "町田🐾 芹谷公園 ❻",
+                    "品川🐾 天王洲島四號公園",
+                    "品川🐾 聖蹟公園",
+                    "品川🐾 街道松の広場",
+                    "品川🐾 鮫洲入江広場",
+                  ]},
+                  { zh: "城市限時調查", en: "友好", bg: "#ffd225", locs: [
+                    "澀谷🏅 Shibuya",
+                    "豐島🏅 MEGA TOKYO @池袋",
+                    "新宿👊🏻 JR 新宿",
+                  ]},
+                  { zh: "城市限時調查 🐾 4️⃣", en: "實地調查", bg: "#90ce46", locs: [
+                    "墨田🏅 Skytree",
+                    "墨田👊🏻 錦糸町",
+                    "江東🐾 江東区役所",
+                    "江東🐾 東方世紀 21 酒店噴水池",
+                    "江東🐾 仙台堀川公園",
+                    "江東🐾 東京都現代美術館",
+                  ]},
+                  { zh: "城市限時調查 🐾 7️⃣", en: "冒險", bg: "#fc5e62", locs: [
+                    "中央🏅 TOKYO DX @日本橋",
+                    "台東🐾 上野公園 ❷",
+                    "港區🐾 芝公園、東京鐵塔",
+                    "港區🐾 気象庁気象科学館",
+                    "港區🐾 江戸見坂公園",
+                    "港區🐾 新橋駅西口広場",
+                    "港區👊🏻 夢之島公園",
+                  ]},
                 ].map(function (item) {
                   return (
-                    <div key={item.zh} style={{ background: item.bg, borderRadius: 12, padding: "14px 16px", boxShadow: "0 1px 4px rgba(0,0,0,0.06)" }}>
-                      <div style={{ color: "#fff", fontSize: 15, fontWeight: 700 }}>{item.en}</div>
-                      <div style={{ color: "rgba(255,255,255,0.75)", fontSize: 11, marginTop: 2 }}>{item.zh}</div>
+                    <div key={item.zh} style={{ background: item.bg, borderRadius: 12, padding: "12px 14px", boxShadow: "0 1px 4px rgba(0,0,0,0.06)" }}>
+                      <div style={{ display: "flex", alignItems: "baseline", gap: 8, marginBottom: 6 }}>
+                        <span style={{ color: "#fff", fontSize: 15, fontWeight: 700 }}>{item.en}</span>
+                        <span style={{ color: "rgba(255,255,255,0.7)", fontSize: 11 }}>{item.zh}</span>
+                      </div>
+                      <div style={{ display: "flex", flexDirection: "column", gap: 2 }}>
+                        {item.locs.map(function (loc) {
+                          return <div key={loc} style={{ color: "rgba(255,255,255,0.92)", fontSize: 12, lineHeight: 1.5 }}>{loc}</div>;
+                        })}
+                      </div>
                     </div>
                   );
                 })}
